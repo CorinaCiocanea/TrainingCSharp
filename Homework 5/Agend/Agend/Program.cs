@@ -12,13 +12,12 @@ namespace Agend
         static void Main(string[] args)
         {
 
-            Afis ad = new Afis();
-            Mondey t = new Mondey();
-            
-            t.Test();
+            Agenda agenda = new Agenda();
+            agenda.Read();
+            agenda.Print();
             //ad.inserare2();
             //ad.afisare2();
-            
+
 
             Console.ReadLine();
         }

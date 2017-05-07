@@ -15,63 +15,70 @@ namespace List
         {
             List<int> items = new List<int>();
             int n, i, j;
-            string s = "da";
-            string s2 = "nu";
+            string yesAnswer = "y";
+            string noAnswer = "n";
             string rasp;
             //ring rasp2;
-            Console.Write("Do you want to add more numbers?: ");
-            rasp = Console.ReadLine();
-            while (s == rasp)
+            string userInput;
+
+
+            bool repeat = true;
+
+            while (repeat)
             {
-
-                Console.Write("Input the size of list : ");
-                n = Convert.ToInt32(Console.ReadLine());
-                for (i = 0; i < n; i++)
+                Console.Write("Do you want to add more numbers (y/n)?");
+                rasp = Console.ReadLine();
+                if (rasp == yesAnswer)
                 {
-                    string userInput;
+
+                    Console.Write(string.Format("Please type an integer number"));
+                    userInput = Console.ReadLine();
                     int newItem;
-                    do
+                    if (int.TryParse(userInput, out newItem))
                     {
-                        Console.Write(string.Format("Enter item #{0}: ", i));
-
-                        userInput = Console.ReadLine();
-                    } while (!int.TryParse(userInput, out newItem));
-
-                    items.Add(newItem);
-
-                }
-                Console.WriteLine("Lista is:");
-
-
-                for (i = 0; i < n; i++)
-                    Console.WriteLine("{0} ", items[i]);
-
-                Console.WriteLine("prime:");
-                for (i = 0; i < n; i++)
-                {
-                    for (j = 2; j < items[i]; j++)
-                        if ((items[i] % j == 0))
-                        {
-                            Console.WriteLine("{0}: not prime", items[i]);
-                            break;
-                        }
-                    if (j == items[i])
+                        items.Add(newItem);
+                    }
+                    else
                     {
-                        Console.WriteLine("{0} : Is a prime", items[i]);
+                        Console.Write(string.Format("That was not a number"));
                     }
                 }
-
-                break;
+                else if (rasp == noAnswer)
+                {
+                    repeat = false;
+                }
             }
-            while (s2 == rasp)
+
+
+            Console.WriteLine("Lista is:");
+
+
+            for (i = 0; i < items.Count; i++)
+                Console.WriteLine("{0} ", items[i]);
+
+            Console.WriteLine("prime:");
+            for (i = 0; i < items.Count; i++)
             {
-                Console.WriteLine("Finish");
-                break;
+                if (IsPrime(items[i]))
+                {
+                    Console.WriteLine(items[i]);
+                }
             }
 
             Console.ReadLine();
 
         }
-       
+
+        private static bool IsPrime(int n)
+        {
+            for (int j = 2; j < n; j++)
+            {
+                if ((n % j == 0))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

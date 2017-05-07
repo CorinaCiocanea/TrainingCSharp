@@ -10,9 +10,9 @@ namespace Aria
     {
         string type;
         double radius;
-        public Circle(string type, double radius)
+        public Circle(double radius)
         {
-            this.type = type;
+            this.type = "circle";
             this.radius = radius;
         }
         public override string Type

@@ -18,7 +18,7 @@ namespace Aria
 
         static void Main(string[] args)
         {
-             string fileName = "ExempluFormeGeometrice.txt";
+            string fileName = "ExempluFormeGeometrice.txt";
              char shapeSeparator = ',';
             //string fileName = "input.txt";
             //char shapeSeparator = ' ';
@@ -34,7 +34,7 @@ namespace Aria
                         {
                             double radius;
                             double.TryParse(item[1], out radius);
-                            list.Add(new Circle(item[0], radius));
+                            list.Add(new Circle(radius));
 
                             break;
                         }
@@ -75,9 +75,9 @@ namespace Aria
 
             }
 
-          foreach (Form lista in list)
+          foreach (Form form in list)
           {
-              Console.WriteLine(string.Format("{0} area is {1}", lista.Type, lista.GetArea()));
+              Console.WriteLine(string.Format("{0} area is {1}", form.Type, form.GetArea()));
           }
           Console.WriteLine();
           Console.WriteLine();

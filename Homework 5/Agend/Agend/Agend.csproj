@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Afis.cs" />
-    <Compile Include="Info.cs" />
-    <Compile Include="Mondey.cs" />
+    <Compile Include="Agenda.cs" />
+    <Compile Include="DailyAgenda.cs" />
+    <Compile Include="Monday.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
