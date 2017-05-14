@@ -23,13 +23,23 @@ namespace Agend
             Console.WriteLine("Enter the number of tasks for {0} :", day);
             int numarDeTaskuri = Convert.ToInt32(Console.ReadLine());
 
-
-            for (int i = 0; i < numarDeTaskuri; i++)
+           string s ;
+            do 
             {
-                Console.Write("Type tasks for {0}: ", day);
-                string[] m = new string[10];
-                tasks.Add(Console.ReadLine());
-            }
+                 Console.Write("Type tasks for {0}: ", day);
+                   s = Console.ReadLine();
+                     if (s != "done")
+                     {
+
+                         tasks.Add(s);
+                     }
+
+               
+
+            } while (s != "done");
+            
+
+
         }
         public void Print()
         {

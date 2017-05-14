@@ -6,42 +6,55 @@ using System.Threading.Tasks;
 
 namespace Transaction
 {
-    class Card
+    public class Card
     {
-        private decimal amount = -1.123M;
+        private decimal amount = 0.0m;
+        Random r = new Random();
         public string OwnerName { get; set; }
-            
-       
-        
-        
+
+        public void Transaction()
+        {
+        }
 
         public void AddMoney(decimal value)
         {
-            if (value < 0) 
-            
-               Console.WriteLine("About to throw an InvalidOperationException");
-                     throw new InvalidOperationException();
-            
-            //this.amount = value;
-            
-            //public int getID()
-            //{
-            
-            //   return amount;
-            //}
-     
-        
-        }
-        public void Pay(decimal amount)
-        { 
-            if (amount < 0)
-                 {
-                      throw new ArgumentNullException("amount");
-                  }
-               Console.WriteLine(amount);
-          
+            if (value < 0)
+            {
+                throw new InvalidOperationException("Value cannot be negative");
+            }
+
+            amount += value;
         }
 
+        public void Pay(decimal value)
+        {
+            if (value < 0)
+            {
+                throw new InvalidOperationException("Value cannot be negative");
+            }
+
+            if (value > amount)
+            {
+                throw new InsufficientFundsException("Not enough money");
+            }
+
+            if (GetRandomException())
+            {
+                throw new ConnectionException("Connection error");
+            }
+
+            amount -= value;
+        }
+
+        private bool GetRandomException()
+        {
+            int randomValue = r.Next(1, 10);
+
+            if (randomValue % 3 == 0)
+                return true;
+
+            return false;
+        }
 
     }
 }

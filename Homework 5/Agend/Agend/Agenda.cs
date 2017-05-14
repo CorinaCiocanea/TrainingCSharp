@@ -11,21 +11,21 @@ namespace Agend
     {
         Monday,
         Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
+      //  Wednesday,
+      //  Thursday,
+      //  Friday,
+      //  Saturday,
+       // Sunday
     }
     class Agenda
     {
-        readonly DailyAgenda [] vect = new DailyAgenda[7];
+        readonly DailyAgenda [] vect = new DailyAgenda[2];
         string str;
         const int n=7;
         public Agenda()
         {
             str = "default";
-            vect = new DailyAgenda[7];
+            vect = new DailyAgenda[2];
             int i = 0;
 
             foreach (Day day in Enum.GetValues(typeof(Day)))

@@ -10,8 +10,20 @@ namespace Transaction
     {
         static void Main(string[] args)
         {
-            Card s = new Card();
-            s.AddMoney(-11.43m);
+            Card card = new Card();
+            card.OwnerName = "User 1";
+            card.AddMoney(100.5m);
+
+            BookShop shop = new BookShop();
+            shop.BuyBook("Nume carte 1", card);
+            shop.BuyBook("Nume carte 2", card);
+            shop.BuyBook("Nume carte 3", card);
+            shop.BuyBook("Nume carte 4", card);
+            shop.BuyBook("Nume carte 1", card);
+            shop.BuyBook("Nume carte 2", card);
+            shop.BuyBook("Nume carte 3", card);
+
+            Console.ReadLine();
         }
     }
 }
