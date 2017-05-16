@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Generics
 {
-    interface IPerson<T>
+    interface IPerson
     {
       string Name
         {

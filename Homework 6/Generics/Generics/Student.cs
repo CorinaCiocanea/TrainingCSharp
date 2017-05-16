@@ -6,21 +6,43 @@ using System.Threading.Tasks;
 
 namespace Generics
 {
-    class Student<T> : IPerson<string>
+    class Student : IPerson
     {
-        public string Name;
-        public long CNP;
-        public DateTime DateBirth;
-        public Student()
-        { 
-         
-        }
-        public Student(string Name, long CNP, DateTime DateBirth) 
+        public string name;
+        public long cnp;
+        public DateTime dateBirth;
+        public string Name
         {
-            this.Name = Name;
-            this.CNP = CNP;
-            this.DateBirth = DateBirth;
-
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+        public long CNP
+        {
+            get
+            {
+                return cnp;
+            }
+            set
+            {
+                cnp = value;
+            }
+        }
+        public DateTime DateBirth
+        {
+            get
+            {
+                return dateBirth;
+            }
+            set
+            {
+                dateBirth = value;
+            }
         }
         public override string ToString()
         {

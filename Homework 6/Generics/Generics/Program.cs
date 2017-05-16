@@ -12,5 +12,7 @@ namespace Generics
         {
             Console.ReadLine();
         }
+
+        
     }
 }

@@ -6,34 +6,34 @@ using System.Threading.Tasks;
 
 namespace FileAgend
 {
-  public class Agend
+  public class Task
     {
-        string Days;
-        string Tasks;
+       protected string Day;
+        string Name;
         string Priority;
         int Hour;
 
-        public string dDays
+        public string dDay
         {
             get
             {
-                return Days;
+                return Day;
             }
             set
             {
-                Days = value;
+                Day = value;
             }
         }
 
-        public string tTasks
+        public string nName
         {
             get
             {
-                return Tasks;
+                return Name;
             }
             set
             {
-                Tasks = value;
+                Name = value;
             }
         }
 

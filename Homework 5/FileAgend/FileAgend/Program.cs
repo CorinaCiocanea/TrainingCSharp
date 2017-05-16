@@ -14,47 +14,67 @@ namespace FileAgend
         {
             string fileName = "input.txt";
           
-            List<Agend> Agends = new List<Agend>();
+         //List<Agend> Agends = new List<Agend>();
+            Dictionary<string, List<Task>> Agends = new Dictionary<string, List<Task>>();
 
            string[] allLines = File.ReadAllLines(fileName);
            
            
            foreach (string line in allLines)
            {
-               string[] item = line.Split(',', '{', '}', ':');
-                  for (int i = 0; i < item.Length; i++)
-                  Console.WriteLine("{0}", item[i]);
-              
-               Agend CurentA = new Agend();
-               CurentA.dDays = item[0];
-               CurentA.tTasks = item[2];
-               CurentA.pPriority = item[3];
-              CurentA.hHour = int.Parse(item[4]);
-               Agends.Add(CurentA);
-               
+               string[] tasks = line.Split(',');
+               List<Task> dictionaryValue = new List<Task>();
+
+               if (Agends.ContainsKey(tasks[0]))
+               {
+                   dictionaryValue = Agends[tasks[0]];
+               }
+               else
+               {
+                   dictionaryValue = new List<Task>();
+               }
+
+               for (int i = 1; i < tasks.Length; i++)
+               {
+                   Task Curent = new Task();
+                   Curent.dDay = tasks[0];
+                   string task = tasks[i];
+                   task = task.TrimStart('{');
+                   task = task.TrimEnd('}');
+
+                   string[] taskProperties = task.Split(':');
+                   //Task CurentB = new Task();
+                   Curent.nName = taskProperties[0];
+                   Curent.pPriority = taskProperties[1];
+                   Curent.hHour = int.Parse(taskProperties[2]);
+
+                   dictionaryValue.Add(Curent);
+               }
+               Agends.Add(tasks[0], dictionaryValue);
 
                
            }
-           foreach (Agend ag in Agends)
+           Console.WriteLine("Display tasks for day");
+           var answer = Console.ReadLine();
+           if (Agends.ContainsKey(answer))
            {
-               
-             Console.WriteLine("the days: {0}, task: {1}, level: {2}, at hour: {3}", ag.dDays, ag.tTasks, ag.pPriority, ag.hHour);
-             System.Console.WriteLine("Type day for which to display tasks");
-             var answer = Console.ReadLine();
-           
+               List<Task> tasks = Agends[answer];
+               foreach (var ag in tasks)
+               {
+
+                   Console.WriteLine("the days: {0}, task: {1}, level: {2}, at hour: {3}", ag.dDay, ag.nName, ag.pPriority, ag.hHour);
+               }
            }
+           else
+           {
+               Console.WriteLine("No tasks");
+           }
+
+               
+           
            
           
-           //foreach (string line in allLines)
-           //{
-           //    string[] arr1 = line.Split('{');
-           //    foreach (string str in arr1)
-           //    {
-           //        string[] arr2 = str.Split('}');
-           //        for (int j = 0; j < arr2.Length; j++)
-           //            Console.WriteLine(arr2[j]);
-           //    }
-           //}
+           
     
              
            Console.ReadLine();

@@ -14,7 +14,7 @@ namespace StudentLinq
       public string DateBirth = DateTime.Now.ToString("MM/dd/yyyy");
         public int Age { get; set; }
         public List<string> Hobby;
-        public List<string> Major;
+        public string Major;
         public List<Curs> Course;
 
     }
