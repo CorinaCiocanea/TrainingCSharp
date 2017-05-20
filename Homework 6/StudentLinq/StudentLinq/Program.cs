@@ -85,7 +85,7 @@ namespace StudentLinq
                             
                              
                        };
-            //List<Curs> cours = new List<Curs>
+         
             var query = students.GroupBy(s => s.Age).OrderByDescending(g => g.Key).FirstOrDefault();
 
             var oldestStudent = from s in students
@@ -95,7 +95,9 @@ namespace StudentLinq
             {
                 Console.WriteLine("Student name: {0}. Student age {1}", item.LastName, item.Age);
             }
+
             Console.WriteLine();
+
             var youngerStudent = from s in students
                                 orderby s.Age ascending
                                 select s;
@@ -103,7 +105,9 @@ namespace StudentLinq
             {
                 Console.WriteLine("Student name: {0}. Student age {1}", item.LastName, item.Age);
             }
+
             Console.WriteLine();
+
             IEnumerable<Student> query3 =
                 from student in students
                 where student.Major.Contains("English")
@@ -115,25 +119,53 @@ namespace StudentLinq
             }
 
             Console.WriteLine();
+
             IEnumerable<Student> query4 =
-                from student in students
+            from student in students
                 where student.Hobby.Contains("Reading")
                 select student;
+          
             foreach (var item in query4)
             {
                 Console.WriteLine("Student name: {0}. Hobbies {1}", item.LastName, string.Join(",",item.Hobby));
             }
-            //Console.WriteLine();
-            //IEnumerable<Student> query2 =
-            //    from student in students
-            //    where student.Course > 2
-            //    select student;
 
-           // var query7 = 
-            //  List<> Fil = students.FindAll(x => x.Course > 2 ? true : false);
-            IEnumerable<Student> x = students.Where(p => p.Course >= 2);
+            Console.WriteLine();
+
+            //var query5 =
+            //    from student in students
+            //    group student by student.Hobby into studGroup
+            //    select new
+            //        {
+
+            //        };
+            IEnumerable<Student> query5 =
+            from student in students
+            where student.Hobby.Contains("Reading")
+            select student;
+            int count = query5.Count();
+
+            foreach (var item in query5)
+            {
+                Console.WriteLine("Student name: {0}. Hobbies {1}", count);
+            }
+
+
+            var query2 =
+                from student in students
+                where student.Course.Count > 2
+                select student;
+            foreach (var item in query4)
+            {
+                Console.WriteLine("Student name: {0}. Hobbies {1}", item.Course);
+            }
+
+           
+                         
+           
+            //IEnumerable<Student> x = students.Where(p => p.Course.Count >= 2);
             Console.ReadLine();
-            //Student s = new Student(); =>
+            
           
           
                 
