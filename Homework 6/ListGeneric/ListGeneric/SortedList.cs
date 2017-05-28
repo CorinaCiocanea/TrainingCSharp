@@ -18,70 +18,58 @@ namespace ListGeneric
            list.Add(item);
        }
 
-       //public void GetMax(T max)
-       //{ 
-
-       //    foreach (T item in list)
-       //    {
-       //        if (item.CompareTo(max) > 0)
-       //        {
-       //            max = item;
-       //        }
-             
-       //    }
-       //   // return max;
-       //}
-
-       public int GetMax(Converter<T, int> projection)
+       public T GetMax()
        {
-          int maxim = int.MinValue;
-          foreach (T item in list)
-          {
-              int value = projection(item);
-              if (value > maxim)
-              {
-                  maxim = value;
-              }
-          }
-          return maxim;
-       }
-
-       public int GetMin(Converter<T, int> projection)
-       {
-           int minim = int.MaxValue;
+           T max = default(T);
            foreach (T item in list)
            {
-               int value = projection(item);
-               if (value > minim)
+               if (item.CompareTo(max) > 0)
                {
-                   minim = value;
+                   max = item;
                }
-           }
-           return minim;
-       }
-       //public int GetMin(T min, Converter<T, int> projection)
-       //{
 
-       //    foreach (T item in list)
-       //    {
-       //        if (item.CompareTo(min) < 0)
-       //        {
-       //            min = item;
-       //        }
-       //    }
-       //    return min;
-       //}
-       //public void SortAsc(T a, T b)
-       //{
-       //   list.Sort((a, b) => a.CompareTo(b));
-       //    return list;
-              
-       //}
+           }
+            return max;
+       }
+
+       public T GetMin()
+       {
+           T min = default(T);
+           foreach (T item in list)
+           {
+               if (item.CompareTo(min) < 0)
+               {
+                   min = item;
+               }
+
+           }
+           return min;
+       }
+
+       public IEnumerable<T> GetItems(Direction direction)
+       {
+           if (direction == Direction.Asc)
+           {
+               list.Sort((a, b) => a.CompareTo(b));
+           }
+           else
+           {
+               list.Sort((a, b) => (-1) * a.CompareTo(b));
+           }
+           return list;
+       }
+
+
        public IEnumerator<T> GetEnumerator()
-       { 
-         return list.GetEnumerator();
+       {
+           return list.GetEnumerator();
        }
        
 
     }
+   public enum Direction
+   { 
+     Asc,
+     Desc
+   }
 }
