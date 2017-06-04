@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenerateRandomData
+namespace Models
 {
-    public class Person 
+   public class Whateirs
     {
-
-        private int age;
         private string name;
+        private int id;
+        public string coordinator;
+        public List<Tables> tables { get; set; }
+      
 
         public string Name
         {
@@ -23,18 +25,28 @@ namespace GenerateRandomData
                 name = value;
             }
         }
-        public int Age
+        public int Id
         {
             get
             {
-                return age;
+                return id;
             }
             set
             {
-                age = value;
+                id = value;
+            }
+
+        }
+        public string Coordinator
+        {
+            get
+            {
+                return coordinator;
+            }
+            set
+            {
+                coordinator = value;
             }
         }
-
-
     }
 }

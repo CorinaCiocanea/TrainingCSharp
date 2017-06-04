@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ListGeneric
 {
-   public class Person
+   public class Person : IComparable
     {
 
-            public int age;
-            public string name;
+            private int age;
+             private string name;
 
             public string Name
             {
@@ -51,7 +51,11 @@ namespace ListGeneric
             public int CompareTo(object obj)
             {
                 Person person = (Person) obj;
-                throw new NotImplementedException();
+                if (person == null)
+                {
+                    return 1;
+                }
+                return CompareTo(person);
             }
         }
     }

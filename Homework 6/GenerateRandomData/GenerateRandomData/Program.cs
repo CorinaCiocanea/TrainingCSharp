@@ -15,8 +15,15 @@ namespace GenerateRandomData
             IList<Student> generatedStudents = Generate<Student>(10);
 
             IList<Person> generatedPersons = Generate<Person>(5);
-            //Console.WriteLine("{0}", );
-            //Person p = new Person();
+            foreach(Student s in generatedStudents)
+            {
+              Console.WriteLine(s.Name);
+            }
+            Console.WriteLine("The persons are:");
+            foreach (Person p in generatedPersons)
+            {
+                Console.WriteLine(p.Name);
+            }
 
             Console.ReadLine();
         }
@@ -31,7 +38,7 @@ namespace GenerateRandomData
                 instance.Age = r.Next(1, 99);
                 instancesList.Add(instance);
                 instance.Name = "Alex" + r.Next(1, 99);
-                instance.Name = names[r.Next(0, names.Length - 1)];
+                //instance.Name = names[r.Next(0, names.Length - 1)];
                 n--;
 
             } while (n != 0);

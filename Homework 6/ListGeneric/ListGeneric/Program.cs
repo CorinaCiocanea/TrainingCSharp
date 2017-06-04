@@ -33,14 +33,19 @@ namespace ListGeneric
             {
                 Console.WriteLine(l + " ");
             }
-             SortedList<Person> persons = new SortedList<Person> 
-            // persons.Add(new Person {Name = "Radu", Age = 18});
-            // persons.Add(new Person {Name = "Alex", Age = 17});
-            // persons.Add(new Person {Name = "Jan", Age = 24})
-              
+
+            SortedList<Person> persons = new SortedList<Person>(); 
+             persons.Add(new Person {Name = "Radu", Age = 18});
+             persons.Add(new Person {Name = "Alex", Age = 17});
+             persons.Add(new Person {Name = "Jan", Age = 24});
+
+             Console.WriteLine(persons.GetMax());
+
+             foreach (Person m in persons)
+             {
+                 Console.WriteLine(m + " ");
+             }
             
-            
-            Console.WriteLine(persons.GetMax());
             Console.ReadLine();
           
         }
