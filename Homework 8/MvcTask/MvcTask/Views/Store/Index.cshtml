@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MvcTask.Models.ListGen>
+
+@{
+    ViewBag.Title = "Store";
+}
+
+<h3>Browse ListGens</h3>
+<p>
+    Select from @Model.Count() listgens:</p>
+
+<ul>
+    @foreach (var listgen in Model)
+    { 
+      <li>@Html.ActionLink(listgen.Name, "Browse", new { listgen = listgen.Name})</li>
+    }
+</ul>
