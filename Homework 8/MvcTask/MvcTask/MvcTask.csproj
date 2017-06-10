@@ -97,6 +97,8 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\StoreListGenController.cs" />
+    <Compile Include="Controllers\StoreTaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +204,14 @@
     <Content Include="Views\Store\Details.cshtml" />
     <Content Include="Views\Store\Browse.cshtml" />
     <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\StoreListGen\Index.cshtml" />
+    <Content Include="Views\StoreListGen\Create.cshtml" />
+    <Content Include="Views\StoreListGen\Edit.cshtml" />
+    <Content Include="Views\StoreListGen\Delete.cshtml" />
+    <Content Include="Views\StoreTask\Index.cshtml" />
+    <Content Include="Views\StoreTask\Create.cshtml" />
+    <Content Include="Views\StoreTask\Edit.cshtml" />
+    <Content Include="Views\StoreTask\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

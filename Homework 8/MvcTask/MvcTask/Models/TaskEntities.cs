@@ -10,5 +10,6 @@ namespace MvcTask.Models
     {
         public DbSet<ListGen> ListGens { get; set; }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<ListTask> ListTasks { get; set; }
     }
 }

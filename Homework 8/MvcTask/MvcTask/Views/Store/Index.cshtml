@@ -1,16 +1,31 @@
-﻿@model IEnumerable<MvcTask.Models.ListGen>
+﻿@model IEnumerable<MvcTask.Models.ListTask>
+>
 
 @{
-    ViewBag.Title = "Store";
+ViewBag.Title = "Store";
+ }
+<h2>ListGen</h2>
+  <table>
+  <tr>
+     <th>
+        Name
+     </th>
+    <th>
+       Description
+    </th>
+
+   <th></th>
+ </tr>
+@foreach (var item in Model) {
+   <tr>
+        
+    <td>
+         @Html.DisplayFor(modelItem => item.ListGenId)
+    </td>
+     <td>
+         @Html.DisplayFor(modelItem => item.ListTaskId)
+    </td>
+     
+</tr>
 }
-
-<h3>Browse ListGens</h3>
-<p>
-    Select from @Model.Count() listgens:</p>
-
-<ul>
-    @foreach (var listgen in Model)
-    { 
-      <li>@Html.ActionLink(listgen.Name, "Browse", new { listgen = listgen.Name})</li>
-    }
-</ul>
+</table>
