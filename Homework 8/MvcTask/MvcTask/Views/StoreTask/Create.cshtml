@@ -36,7 +36,9 @@
             @Html.EditorFor(model => model.Priority )
             @Html.ValidationMessageFor(model => model.Priority)
         </div>
-    
+      
+        <input type="hidden" id="parentListId" value="@Model.ListGenId">
+       
 
         <p>
             <input type="submit" value="Create" />

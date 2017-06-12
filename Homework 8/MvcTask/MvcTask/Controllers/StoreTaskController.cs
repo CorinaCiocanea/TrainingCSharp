@@ -19,19 +19,28 @@ namespace MvcTask.Controllers
 
             return View(tasks);
         }
-        public ActionResult Create()
+        public ActionResult Create(int parentListId)
         {
             ViewBag.TaskId = new SelectList(db.Tasks, "TaskId");
+            //ViewBag.ParentListId = parentListId;
+          //  Task task = new Task();
+          //  task.ListGenId = parentListId;
+           // task.Deadline = DateTime.Now;
+           
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Task task)
+        public ActionResult Create(Task task, int parentListId)
         {
+           
             if (ModelState.IsValid)
             {
+               
+               // task.ListGenId = parentListId;
+               // list.Tasks.Add(task);
                 db.Tasks.Add(task);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "StoreListGen", new { id = task.ListGenId });
             }
             ViewBag.ListGenId = new SelectList(db.Tasks, "TaskId");
             return View(task);

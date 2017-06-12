@@ -18,5 +18,8 @@ namespace MvcTask.Models
         public string Name { get; set; }
         public DateTime Deadline { get; set; }
         public string Priority { get; set; }
+
+        public int ListGenId { get; set; }
+        //public virtual ListGen LisGen { get; set; }
     }
 }

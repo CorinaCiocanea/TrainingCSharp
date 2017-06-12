@@ -103,13 +103,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ListGen.cs" />
-    <Compile Include="Models\ListTask.cs" />
     <Compile Include="Models\SampleData.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TaskEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MvcTask.sdf" />
     <Content Include="Content\Images\home-showcase.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\placeholder.gif" />
@@ -213,9 +213,7 @@
     <Content Include="Views\StoreTask\Edit.cshtml" />
     <Content Include="Views\StoreTask\Delete.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

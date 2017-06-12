@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcTask.Models.ListTask>
+﻿@model IEnumerable<MvcTask.Models.ListGen>
 >
 
 @{
@@ -23,7 +23,7 @@ ViewBag.Title = "Store";
          @Html.DisplayFor(modelItem => item.ListGenId)
     </td>
      <td>
-         @Html.DisplayFor(modelItem => item.ListTaskId)
+         @Html.DisplayFor(modelItem => item.Name)
     </td>
      
 </tr>

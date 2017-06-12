@@ -1,5 +1,14 @@
 ﻿@model MvcTask.Models.ListGen
 
+ @helper Truncate(string input, int length)
+{
+      if (input.Length <= length) {
+           @input
+      } else {
+           @input.Substring(0, length)<text>...</text>
+      }
+}
+
 @{
     ViewBag.Title = "Edit";
 }
@@ -35,8 +44,44 @@
             <input type="submit" value="Save" />
         </p>
     </fieldset>
-}
+    <p>
+         @Html.ActionLink("Create New", "Create", "StoreTask", new { id = Model.ListGenId })
+    </p>
+    <table>
+ <tr>
+    <th>
+       Name
+     </th>
+    <th>
+     Deadline
+    </th>
+      <th>
+   Priority
+    </th>
 
+    <th></th>
+  </tr>
+@foreach (var item in Model.Tasks)
+{ 
+    <tr>
+        <td>
+            @Truncate(item.Name, 25)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deadline)
+        </td>
+      <td>
+     @Truncate(item.Priority, 25)
+ </td>
+  <td>
+     @Html.ActionLink("Edit", "Edit", new { id=item.TaskId }) | @Html.ActionLink("Delete", "Delete", new { id=item.TaskId })
+ </td>
+    </tr>
+ 
+}
+</table>
+
+}
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

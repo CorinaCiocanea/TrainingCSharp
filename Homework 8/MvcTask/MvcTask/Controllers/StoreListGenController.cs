@@ -38,7 +38,8 @@ namespace MvcTask.Controllers
         }
         public ActionResult Edit(int id)
         {
-            ListGen listgen = db.ListGens.Find(id);
+           
+            ListGen listgen = db.ListGens.Include(l => l.Tasks).Single(l => l.ListGenId == id);
             ViewBag.GenreId = new SelectList(db.ListGens, "ListGenId", "Name", listgen.ListGenId);
             return View(listgen);
         }
