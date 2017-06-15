@@ -39,7 +39,7 @@ ViewBag.Title = "Storeeee";
      @Truncate(item.Description, 25)
  </td>
  <td>
-     @Html.ActionLink("Edit", "Edit", new { id=item.ListGenId }) | @Html.ActionLink("Delete", "Delete", new { id=item.ListGenId })
+     @Html.ActionLink("Edit", "Edit", new { listId=item.ListGenId }) | @Html.ActionLink("Delete", "Delete", new { id = item.ListGenId })
  </td>
  </tr>
 }

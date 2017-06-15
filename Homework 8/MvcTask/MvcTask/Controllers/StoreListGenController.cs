@@ -36,10 +36,10 @@ namespace MvcTask.Controllers
             ViewBag.ListGenId = new SelectList(db.ListGens, "ListGenId", "Name");
             return View(listgen);
         }
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int listId)
         {
            
-            ListGen listgen = db.ListGens.Include(l => l.Tasks).Single(l => l.ListGenId == id);
+            ListGen listgen = db.ListGens.Include(l => l.Tasks).Single(l => l.ListGenId == listId);
             ViewBag.GenreId = new SelectList(db.ListGens, "ListGenId", "Name", listgen.ListGenId);
             return View(listgen);
         }

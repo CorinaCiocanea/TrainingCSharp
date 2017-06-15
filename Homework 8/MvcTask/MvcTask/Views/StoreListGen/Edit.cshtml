@@ -45,7 +45,7 @@
         </p>
     </fieldset>
     <p>
-         @Html.ActionLink("Create New", "Create", "StoreTask", new { id = Model.ListGenId })
+         @Html.ActionLink("Create New", "Create", "StoreTask", new { parentListId = Model.ListGenId }, null)
     </p>
     <table>
  <tr>
@@ -65,16 +65,17 @@
 { 
     <tr>
         <td>
-            @Truncate(item.Name, 25)
+            @item.Name
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Deadline)
         </td>
       <td>
-     @Truncate(item.Priority, 25)
+     @Html.DisplayFor(modelItem => item.Priority)
+          
  </td>
   <td>
-     @Html.ActionLink("Edit", "Edit", new { id=item.TaskId }) | @Html.ActionLink("Delete", "Delete", new { id=item.TaskId })
+     @Html.ActionLink("Edit", "Edit","StoreTask", new { parentListId = item.TaskId }, null) | @Html.ActionLink("Delete", "Delete", "StoreTask", new { parentListId = item.TaskId }, null)
  </td>
     </tr>
  

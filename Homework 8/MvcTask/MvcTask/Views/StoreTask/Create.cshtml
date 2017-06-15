@@ -1,7 +1,10 @@
 ﻿@model MvcTask.Models.Task
 
+
+
 @{
     ViewBag.Title = "Create";
+   
 }
 
 <h2>Create</h2>
@@ -33,11 +36,13 @@
             @Html.LabelFor(model => model.Priority)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Priority )
+           
+       @*    @Html.DropDownListFor(model => model.Priority, new SelectList(Enum.GetValues(typeof(Priority))), "Select Priority") *@
+           @Html.EditorFor(model => model.Priority )
             @Html.ValidationMessageFor(model => model.Priority)
         </div>
       
-        <input type="hidden" id="parentListId" value="@Model.ListGenId">
+       @* <input type="hidden" id="parentListId" value="@Model.ListGenId"> *@
        
 
         <p>

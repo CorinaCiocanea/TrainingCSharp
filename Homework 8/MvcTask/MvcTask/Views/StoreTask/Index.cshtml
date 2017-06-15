@@ -42,10 +42,10 @@ ViewBag.Title = "Storeeee";
             @Html.DisplayFor(modelItem => item.Deadline)
         </td>
       <td>
-     @Truncate(item.Priority, 25)
+     @Html.DisplayFor(modelItem => item.Priority)
  </td>
  <td>
-     @Html.ActionLink("Edit", "Edit", new { id=item.TaskId }) | @Html.ActionLink("Delete", "Delete", new { id=item.TaskId })
+     @Html.ActionLink("Edit", "Edit", new { parentListId=item.TaskId }) | @Html.ActionLink("Delete", "Delete", new { parentListId=item.TaskId })
  </td>
  </tr>
 }
