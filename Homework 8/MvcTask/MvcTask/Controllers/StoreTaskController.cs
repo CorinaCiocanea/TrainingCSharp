@@ -46,20 +46,19 @@ namespace MvcTask.Controllers
             ViewBag.ListGenId = new SelectList(db.Tasks, "TaskId");
             return View(task);
         }
-        public ActionResult Edit(int? parentListId)
+        public ActionResult Edit(int? taskId)
         {
-            Task task = db.Tasks.Find(parentListId);
+            Task task = db.Tasks.Find(taskId);
             ViewBag.TaskId = new SelectList(db.Tasks, "TaskId", "Name", task.TaskId);
             return View(task);
         }
         [HttpPost]
-        public ActionResult Edit(Task task, int? parentListId)
+        public ActionResult Edit(Task task)
         {
             if (ModelState.IsValid)
             {
-                //task.ListGenId = parentListId;
+               
                 db.Entry(task).State = EntityState.Modified;
-                task.ListGenId = parentListId;
                 db.SaveChanges();
                 return RedirectToAction("Edit", "StoreListGen", new { listId = task.ListGenId });
             }
@@ -80,12 +79,11 @@ namespace MvcTask.Controllers
         {
        
             Task task = db.Tasks.Find(parentListId);
-         //  task.ListGenId = parentListId;
+            int? originlistId = task.ListGenId;
             db.Tasks.Remove(task);
             db.SaveChanges();
-          // task.ListGenId = parentListId;
-            return RedirectToAction("Index");
-           // return RedirectToAction("Edit", "StoreListGen", new { listId = task.ListGenId });
+            //return RedirectToAction("Index");
+            return RedirectToAction("Edit", "StoreListGen", new { listId = originlistId });
 
         }
         protected override void Dispose(bool disposing)
