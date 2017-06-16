@@ -1,5 +1,7 @@
 ﻿@model MvcTask.Models.Task
 
+@using MvcTask.Models
+
 @{
     ViewBag.Title = "Edit";
 }
@@ -14,7 +16,7 @@
     <fieldset>
         <legend>Task</legend>
          @Html.HiddenFor(model => model.TaskId)
-        @Html.HiddenFor(model => model.Name)
+        @Html.HiddenFor(model => model.ListGenId)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -35,13 +37,13 @@
             @Html.LabelFor(model => model.Priority)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Priority )
+           @Html.DropDownListFor(model => model.Priority, new SelectList(Enum.GetValues(typeof(Priority))))
             @Html.ValidationMessageFor(model => model.Priority)
         </div>
     
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

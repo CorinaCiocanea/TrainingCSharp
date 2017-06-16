@@ -6,18 +6,21 @@ using System.Web.Mvc;
 using MvcTask.Models;
 using System.Data.Entity;
 using System.Data;
+using System.Net;
+
 
 namespace MvcTask.Controllers
 {
     public class StoreListGenController : Controller
     {
         private TaskEntities db = new TaskEntities();
-
+        
         public ActionResult Index()
         {
-            var listgens = db.ListGens.ToList();
-
-            return View(listgens);
+            var listgens = db.ListGens.Include(a => a.Tasks.Count);
+            //List<Task> listtask = new List<Task>();
+            
+            return View(listgens.ToList());
         }
         public ActionResult Create()
         {
@@ -58,6 +61,7 @@ namespace MvcTask.Controllers
         public ActionResult Delete(int id)
         {
             ListGen listgen = db.ListGens.Find(id);
+
             return View(listgen);
         }
 
@@ -68,6 +72,29 @@ namespace MvcTask.Controllers
         public ActionResult Delete(int id, FormCollection collection)
         {
 
+            ListGen listgen = db.ListGens.Find(id);
+            db.ListGens.Remove(listgen);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult DeleteAll(int id)
+        {
+
+            ListGen listgen = db.ListGens.Find(id);
+         // ListGen listgen = db.ListGens.FirstOrDefault(c => c.ListGenId == id);
+            return View(listgen);
+        }
+
+        //
+        // POST: /StoreManager/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteAll(int id, FormCollection collection)
+        {
+
+           // ListGen listgen = db.ListGens.FirstOrDefault(c => c.ListGenId == id && c.TaskId == listgen.TaskId);
             ListGen listgen = db.ListGens.Find(id);
             db.ListGens.Remove(listgen);
             db.SaveChanges();

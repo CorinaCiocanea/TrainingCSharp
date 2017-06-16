@@ -1,6 +1,6 @@
 ﻿@model MvcTask.Models.Task
 
-
+@using MvcTask.Models;
 
 @{
     ViewBag.Title = "Create";
@@ -37,8 +37,8 @@
         </div>
         <div class="editor-field">
            
-       @*    @Html.DropDownListFor(model => model.Priority, new SelectList(Enum.GetValues(typeof(Priority))), "Select Priority") *@
-           @Html.EditorFor(model => model.Priority )
+         @Html.DropDownListFor(model => model.Priority, new SelectList(Enum.GetValues(typeof(Priority))), "Select Priority")
+         
             @Html.ValidationMessageFor(model => model.Priority)
         </div>
       

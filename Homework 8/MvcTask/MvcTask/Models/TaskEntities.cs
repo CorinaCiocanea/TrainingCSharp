@@ -10,6 +10,15 @@ namespace MvcTask.Models
     {
         public DbSet<ListGen> ListGens { get; set; }
         public DbSet<Task> Tasks { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<ListGen>()
+        //        .HasOptional(j => j.Tasks)
+        //        .WithMany()
+        //        .WillCascadeOnDelete(true);
+        //    base.OnModelCreating(modelBuilder);
+        //}
       
     }
 }

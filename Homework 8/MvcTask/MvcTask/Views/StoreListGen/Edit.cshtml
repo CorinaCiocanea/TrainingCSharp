@@ -24,7 +24,7 @@
         
         @Html.HiddenFor(model => model.ListGenId)
    
-       @Html.HiddenFor(model => model.TaskId)
+
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -77,7 +77,7 @@
           
  </td>
   <td>
-     @Html.ActionLink("Edit", "Edit", "StoreTask", new { taskId = item.TaskId }, null) | @Html.ActionLink("Delete", "Delete", "StoreTask", new { parentListId = item.TaskId }, null)
+     @Html.ActionLink("Edit", "Edit", "StoreTask", new { taskId = item.TaskId }, null) | @Html.ActionLink("Delete", "Delete", "StoreTask", new { parentListId = item.TaskId }, new { @class = "not-active" })
  </td>
     </tr>
  

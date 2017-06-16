@@ -325,3 +325,11 @@ tr:hover
 {
 	background-color: #fff;
 }
+
+.non-active {
+pointer-events: none;
+color: gray;
+opacity: 0.3;
+cursor: default;
+
+}

@@ -211,6 +211,7 @@
     <Content Include="Views\StoreTask\Create.cshtml" />
     <Content Include="Views\StoreTask\Edit.cshtml" />
     <Content Include="Views\StoreTask\Delete.cshtml" />
+    <Content Include="Views\StoreListGen\DeleteAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
