@@ -36,9 +36,9 @@ body
 
 #promotion
 {
-	height: 300px; 
-	width: 700px; 
-	background: url(/content/Images/home-showcase.png) no-repeat;
+	height: 500px; 
+	width: 800px; 
+	background: url(/content/Images/task.png) no-repeat;
 }
 
 ul li a
@@ -326,7 +326,7 @@ tr:hover
 	background-color: #fff;
 }
 
-.non-active {
+.not-active {
 pointer-events: none;
 color: gray;
 opacity: 0.3;

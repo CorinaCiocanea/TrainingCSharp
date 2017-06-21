@@ -1,0 +1,28 @@
+﻿@model MvcBind.Models.Input
+@{
+    ViewBag.Title = "MultiplyModel";
+}
+
+!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="viewport" content="width-device-width" />
+        <title></title>
+
+    </head>
+
+    <body>
+        <div>
+            @using (Html.BeginForm("MultiplyModel", "Math"))
+            {
+        @Html.TextBoxFor(m => m.a)
+        @Html.TextBoxFor(m => m.b)
+                <input type="submit" value"Save" />
+            }
+            </div>
+
+    </body>
+</html>
+
+

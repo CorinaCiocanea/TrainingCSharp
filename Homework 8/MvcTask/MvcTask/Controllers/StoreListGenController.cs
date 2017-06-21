@@ -17,7 +17,7 @@ namespace MvcTask.Controllers
         
         public ActionResult Index()
         {
-            var listgens = db.ListGens.Include(a => a.Tasks.Count);
+            var listgens = db.ListGens.Include(a => a.Tasks);
             //List<Task> listtask = new List<Task>();
             
             return View(listgens.ToList());
@@ -83,19 +83,24 @@ namespace MvcTask.Controllers
         {
 
             ListGen listgen = db.ListGens.Find(id);
-         // ListGen listgen = db.ListGens.FirstOrDefault(c => c.ListGenId == id);
             return View(listgen);
         }
 
         //
         // POST: /StoreManager/Delete/5
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteAll")]
         public ActionResult DeleteAll(int id, FormCollection collection)
         {
 
-           // ListGen listgen = db.ListGens.FirstOrDefault(c => c.ListGenId == id && c.TaskId == listgen.TaskId);
             ListGen listgen = db.ListGens.Find(id);
+           // db.ListGens.Remove(listgen);
+            List<Task> tasksdelet = new List<Task>();
+            tasksdelet.AddRange(listgen.Tasks);
+            foreach (var listgentask in tasksdelet)
+            {
+                db.Tasks.Remove(listgentask);
+            }
             db.ListGens.Remove(listgen);
             db.SaveChanges();
             return RedirectToAction("Index");

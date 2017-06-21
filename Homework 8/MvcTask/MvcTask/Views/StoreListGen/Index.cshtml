@@ -31,6 +31,9 @@ ViewBag.Title = "Storeeee";
      <th>
          Number of Taks
      </th>
+     <th>
+         Actions
+     </th>
   </tr>
 @foreach (var item in Model) {
   <tr>
@@ -46,9 +49,17 @@ ViewBag.Title = "Storeeee";
         
         </td>
       
-      <th></th>
  <td>
-     @Html.ActionLink("Edit", "Edit", new { listId=item.ListGenId }) | @Html.ActionLink("Delete", "Delete", new { id = item.ListGenId }) |  @Html.ActionLink("DeleteAll", "DeleteAll", new { id = item.ListGenId })
+     @Html.ActionLink("Edit", "Edit", new { listId=item.ListGenId }) | 
+     @if (item.Tasks.Count == 0)
+     {
+        @Html.ActionLink("Delete", "Delete", new { id = item.ListGenId }) 
+     }
+     else
+     {
+        @Html.ActionLink("Delete", "Delete", new { id = item.ListGenId }, new { @class = "not-active"}) 
+     }
+     |  @Html.ActionLink("DeleteAll", "DeleteAll", new { id = item.ListGenId })
  </td>
  </tr>
 }

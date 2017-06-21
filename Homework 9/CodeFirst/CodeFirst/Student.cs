@@ -16,7 +16,7 @@ namespace CodeFirst
             English,
             Sociology
         }
-  public class Student
+    public class Student
     {
             public string LastName { get; set; }
             public string FirstName { get; set; }

@@ -1,0 +1,27 @@
+﻿@using System.Runtime.InteropServices;
+
+@{
+    Layout = null;
+}
+!DOCTYPE html>
+<html>
+    <head>
+
+        <meta name="viewport" content="width-device-width" />
+        <title></title>
+
+    </head>
+
+    <body>
+        <div>
+            @using (Html.BeginForm("Multiply", "Math"))
+            {
+        @Html.TextBox("a")
+        @Html.TextBox("b")
+                <input type="submit" value"Save" />
+            }
+            </div>
+
+    </body>
+</html>
+
