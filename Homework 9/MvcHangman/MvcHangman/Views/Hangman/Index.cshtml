@@ -1,5 +1,55 @@
-﻿@{
+﻿@using System.ServiceModel
+@model MvcHangman.Models.GameInfo
+
+@{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Guess world</h2>
+<h2>
+     @foreach (var character in Model.hiddenWorld)
+     {
+         var variable = false;
+         foreach (var letter in Model.letterUsed)
+         {
+             if (letter == Char.ToUpper(character))
+             {
+              
+                 variable = true;
+                 break;
+             }
+         }
+         if (variable == true)
+             
+         {
+             
+         @Html.Raw(character.ToString())
+
+         }
+         else
+         {
+           @Html.Raw("_ ")
+         }
+        
+         
+         }
+    
+    <div>
+        Letters:
+   @foreach (var a in Model.lettersAvailable)
+     {
+       @Html.Raw((char)a + ", ")
+    } 
+     </div>
+    @using (Html.BeginForm())
+    {
+       <div>
+           @Html.HiddenFor(m => m.hiddenWorld)
+           @Html.HiddenFor(m => m.letterUsed)
+           @Html.TextBoxFor(m => m.letterNext) <button type="submit">Try</button>
+           @Html.ActionLink("Try", "Index")
+
+       </div>
+    }
+
+</h2>

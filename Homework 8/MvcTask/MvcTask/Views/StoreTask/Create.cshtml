@@ -28,8 +28,10 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.Deadline)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Deadline )
+        <div class="editor-field">           
+        
+            @Html.EditorFor(model => model.Deadline)
+            
             @Html.ValidationMessageFor(model => model.Deadline)
         </div>
    <div class="editor-label">
@@ -46,11 +48,24 @@
        
 
         <p>
-            <input type="submit" value="Create" />
+            <input  id="new" type="submit" value="Create" />
         </p>
+       
     </fieldset>
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input[type=datetime]').datepicker({
+            dateFormat: "dd/M/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-60:+0"
+        });
+
+    });
+</script>  
+  
