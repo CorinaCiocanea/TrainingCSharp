@@ -43,7 +43,8 @@
          
             @Html.ValidationMessageFor(model => model.Priority)
         </div>
-       
+     
+      
        @* <input type="hidden" id="parentListId" value="@Model.ListGenId"> *@
        
 
@@ -57,6 +58,12 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+$(document).ready(function() {
+   var d = $("#YourDateField").val(); 
+   alert(d);
+
+  $("#YourDateField").val = "01/01/2000"; 
+});
 <script type="text/javascript">
     $(document).ready(function () {
         $('input[type=datetime]').datepicker({

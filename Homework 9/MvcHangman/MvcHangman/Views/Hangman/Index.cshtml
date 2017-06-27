@@ -39,11 +39,12 @@
    @foreach (var a in Model.lettersAvailable)
      {
        @Html.Raw((char)a + ", ")
-    } 
+    }  
      </div>
     @using (Html.BeginForm())
-    {
+    { 
        <div>
+           @Html.HiddenFor(m => m.lettersAvailable)
            @Html.HiddenFor(m => m.hiddenWorld)
            @Html.HiddenFor(m => m.letterUsed)
            @Html.TextBoxFor(m => m.letterNext) <button type="submit">Try</button>

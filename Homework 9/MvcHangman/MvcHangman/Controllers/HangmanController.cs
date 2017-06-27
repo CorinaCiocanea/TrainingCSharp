@@ -42,8 +42,15 @@ namespace MvcHangman.Controllers
             {
                 gameInfo.letterUsed += gameInfo.letterNext;
                 gameInfo.letterNext = ' ';
-
-               // ModelState.Clear();
+                   gameInfo.lettersAvailable = new string(Enumerable.Range(65, 26)
+                   .Select(number => (char)number)
+                   .Where(c => gameInfo.letterUsed.Contains(c) == false)
+                   .ToArray());
+             //gameInfo.lettersAvailable =  gameInfo.lettersAvailable.Remove(gameInfo.lettersAvailable.IndexOf(gameInfo.letterNext) + 1, 1);
+               //gameInfo.lettersAvailable = new string(Enumerable.Range(65, 26)
+               //     .Select(number => (char)number)
+               //     .ToArray());
+                ModelState.Clear();
                 return View(gameInfo);
             }
     }
