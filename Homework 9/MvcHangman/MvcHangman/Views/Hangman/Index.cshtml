@@ -14,10 +14,15 @@
          {
              if (letter == Char.ToUpper(character))
              {
-              
+
                  variable = true;
                  break;
              }
+             //if (letter != character)
+             //{
+             //    Model.numberChoices = Model.numberChoices - 1;
+             //}
+             
          }
          if (variable == true)
              
@@ -29,16 +34,54 @@
          else
          {
            @Html.Raw("_ ")
+
+         }
+
+         if (variable == true)
+         {
+             Model.numberChoices = Model.numberChoices - 1;
          }
         
-         
+        
          }
     
     <div>
-        Letters:
+        Number of choices left: 
+      @Model.numberChoices
+
+        @foreach (var alfa in Model.hiddenWorld)
+    {
+        foreach (var beta in Model.letterUsed)
+        {
+            if (beta != alfa)
+            {
+                Model.numberChoices = Model.numberChoices - 1;
+            }
+        }
+    }
+       
+    </div>
+    <div>
+        Already used letter:
+        @foreach (var b in Model.letterUsed)
+        {
+          @Html.Raw((char)b + ", ");
+        }
+
+    </div>
+<div>
+    alfabet:
+    @foreach (var alfa in Model.lettersAvailable)
+    {
+        <li>@Html.ActionLink((char)alfa + ", ", "Index")</li>
+    }
+</div>
+    <div>
+        Letters: still available:
    @foreach (var a in Model.lettersAvailable)
      {
-       @Html.Raw((char)a + ", ")
+       @Html.Raw((char)a + ", ");
+       
     }  
      </div>
     @using (Html.BeginForm())
