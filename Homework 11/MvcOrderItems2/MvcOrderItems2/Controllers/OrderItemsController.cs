@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MvcOrderItems.Models;
+using MvcOrderItems2.Models;
 
-
-namespace MvcOrderItems.Controllers
+namespace MvcOrderItems2.Controllers
 {
     public class OrderItemsController : Controller
     {
@@ -17,23 +16,30 @@ namespace MvcOrderItems.Controllers
         {
             return View();
         }
-
         public ActionResult InsertNumbers()
         {
-            return View();
+            var iteminfo = new ItemList();
+          
+            iteminfo.Items.Insert(0, new ItemsInfo());
+            return View(iteminfo);
         }
-
+        [HttpPost]
+        public ActionResult InsertNumbers(ItemsInfo iteminfo)
+        {
+            return View(iteminfo);
+        }
         public ActionResult SortedNumbers()
         {
             var iteminfo = new ItemList();
             iteminfo.Items.Insert(0, new ItemsInfo());
             return View(iteminfo);
         }
-        [HttpPost]
+    
         public ActionResult SortedNumbers(ItemsInfo iteminfo)
         {
             return View(iteminfo);
         }
+
 
     }
 }

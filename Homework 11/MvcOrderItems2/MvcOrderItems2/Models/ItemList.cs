@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MvcOrderItems.Models
+namespace MvcOrderItems2.Models
 {
     public class ItemList
     {

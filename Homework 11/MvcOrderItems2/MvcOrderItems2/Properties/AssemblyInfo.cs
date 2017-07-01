@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MvcOrderItems")]
+[assembly: AssemblyTitle("MvcOrderItems2")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("MvcOrderItems")]
+[assembly: AssemblyProduct("MvcOrderItems2")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("73ccfdf2-cc83-4e01-908d-0a6aaa5b77cb")]
+[assembly: Guid("612e6e2e-0010-42bc-97ff-72f0c0db69e4")]
 
 // Version information for an assembly consists of the following four values:
 //
