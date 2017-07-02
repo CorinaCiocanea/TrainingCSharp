@@ -1,5 +1,6 @@
 ﻿@model MvcOrderItems2.Models.ItemsInfo
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -10,7 +11,7 @@ How many numbers do you need to sort?
     { 
        <div>
           
-           @Html.TextBoxFor(m => m.NumberAdd) <button type="submit">Next</button>
+           @Html.TextBox("count") <button type="submit">Next</button>
            
 
        </div>

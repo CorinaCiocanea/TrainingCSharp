@@ -192,6 +192,8 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Hangman\Index.cshtml" />
+    <Content Include="Views\Hangman\GameOver.cshtml" />
+    <Content Include="Views\Hangman\Victory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,29 +16,36 @@ namespace MvcOrderItems2.Controllers
         {
             return View();
         }
-        public ActionResult InsertNumbers()
-        {
-            var iteminfo = new ItemList();
+        //public ActionResult InsertNumbers()
+        //{
+        //    var iteminfo = new ItemList();
           
-            iteminfo.Items.Insert(0, new ItemsInfo());
-            return View(iteminfo);
+        //    iteminfo.Items.Insert(0, new ItemsInfo());
+        //    return View(iteminfo);
+        //}
+        [HttpPost]
+        public ActionResult InsertNumbers(int count)
+        {
+           // ItemList list = new ItemList();
+            List<ItemsInfo> info = new List<ItemsInfo>();
+            for (int i = 0; i < count; i++) 
+            {
+               info.Add(new ItemsInfo());
+            }
+            return View(info);
         }
         [HttpPost]
-        public ActionResult InsertNumbers(ItemsInfo iteminfo)
+        public ActionResult SortedNumbers(IList<ItemsInfo> numbers)
         {
-            return View(iteminfo);
-        }
-        public ActionResult SortedNumbers()
-        {
-            var iteminfo = new ItemList();
-            iteminfo.Items.Insert(0, new ItemsInfo());
-            return View(iteminfo);
+//List<ItemsInfo> info = new List<ItemsInfo>();
+            numbers = numbers.OrderBy(n => n.Item).ToList();
+            return View(numbers.ToList());
         }
     
-        public ActionResult SortedNumbers(ItemsInfo iteminfo)
-        {
-            return View(iteminfo);
-        }
+        //public ActionResult SortedNumbers(ItemsInfo iteminfo)
+        //{
+        //    return View(iteminfo);
+        //}
 
 
     }

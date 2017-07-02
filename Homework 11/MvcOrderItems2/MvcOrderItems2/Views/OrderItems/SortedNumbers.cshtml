@@ -1,5 +1,36 @@
-﻿@{
+﻿@model IEnumerable<MvcOrderItems2.Models.ItemsInfo>
+
+
+@{
     ViewBag.Title = "SortedNumbers";
 }
 
 <h2>SortedNumbers</h2>
+@using (Html.BeginForm())
+    { 
+      @* <div>
+             Sorted numbers are:
+          @foreach( var m in Model)
+          {
+              <div>
+
+                   @Html.Raw((int(m) + ", ");
+              </div>
+          } 
+           
+       </div> *@
+}
+    <table class="table">
+     @foreach (var item in Model)
+      { 
+        <tr>
+            <td>
+                
+                @Html.DisplayFor(modelItem => item.Item)
+            
+            </td>
+
+        </tr>
+      }
+        </table> 
+    

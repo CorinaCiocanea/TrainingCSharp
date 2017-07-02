@@ -26,7 +26,7 @@ namespace MvcXAnd0
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Xand0", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }

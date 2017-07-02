@@ -18,11 +18,7 @@
                  variable = true;
                  break;
              }
-             //if (letter != character)
-             //{
-             //    Model.numberChoices = Model.numberChoices - 1;
-             //}
-             
+            
          }
          if (variable == true)
              
@@ -36,30 +32,25 @@
            @Html.Raw("_ ")
 
          }
-
-         if (variable == true)
-         {
-             Model.numberChoices = Model.numberChoices - 1;
-         }
         
         
          }
     
-    <div>
-        Number of choices left: 
-      @Model.numberChoices
+   @* <div>
 
-        @foreach (var alfa in Model.hiddenWorld)
-    {
-        foreach (var beta in Model.letterUsed)
+        @foreach (var alfa in Model.letterUsed)
         {
-            if (beta != alfa)
+            if (Model.hiddenWorld.Contains(Char.ToLower(alfa)) == false)
             {
                 Model.numberChoices = Model.numberChoices - 1;
             }
+                
         }
-    }
        
+    </div>*@
+    <div>
+        Number of choices left: 
+      @Model.numberChoices
     </div>
     <div>
         Already used letter:
@@ -70,11 +61,7 @@
 
     </div>
 <div>
-    alfabet:
-    @foreach (var alfa in Model.lettersAvailable)
-    {
-        <li>@Html.ActionLink((char)alfa + ", ", "Index")</li>
-    }
+    
 </div>
     <div>
         Letters: still available:
