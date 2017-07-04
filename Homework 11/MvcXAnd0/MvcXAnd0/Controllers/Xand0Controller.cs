@@ -13,19 +13,27 @@ namespace MvcXAnd0.Controllers
 
         public ActionResult Index()
         {
-            return View(new  List<MvcXAnd0.Models.Coord>());
+            return View(new List<MvcXAnd0.Models.Coord>());
         }
         [HttpPost]
         public ActionResult Index(Coord model)
         {
 
-             Coord inf = new Coord();
-             Random rand = new Random();
-             inf.CoordX = rand.Next(3);
-             inf.CoordY = rand.Next(3);
-             inf.Player = Player.O;
-            //inf.Row = rand.Next();
+            Coord inf = new Coord();
+            Random rand = new Random();
+            inf.CoordX = rand.Next(3);
+            inf.CoordY = rand.Next(3);
+            inf.Player = Player.O;
+            inf.Row = rand.Next();
 
+            int nrmove = 0;
+            bool winner = false;
+
+            while (!winner && nrmove < 9)
+            {
+               
+            
+            }
             //Player currentPlayer = Player.X;
             //if (currentPlayer == Player.X)
             //{
@@ -37,9 +45,9 @@ namespace MvcXAnd0.Controllers
             //        currentPlayer = Player.X;
                     
             //    }
-            model.Player = Player.X;
-            var game = new List<MvcXAnd0.Models.Coord>();
-            game.Add(model);
+             model.Player = Player.X;
+             var game = new List<MvcXAnd0.Models.Coord>();
+             game.Add(model);
             game.Add(inf);
             return View(model);
         }

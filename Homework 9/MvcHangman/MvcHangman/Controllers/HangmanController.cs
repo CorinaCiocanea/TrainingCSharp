@@ -32,6 +32,8 @@ namespace MvcHangman.Controllers
                     .ToArray()),
                 letterNext = ' '
             };
+            gameInfo.lettersAvailable = gameInfo.lettersAvailable.Remove(gameInfo.lettersAvailable.Length - 1);
+            gameInfo.lettersAvailable = gameInfo.lettersAvailable.TrimEnd(',');
             gameInfo.numberChoices = 2;
             gameInfo.lettersAvailable = new string(gameInfo.lettersAvailable.Where(element => gameInfo.letterUsed.Contains(element) == false).ToArray());
 
@@ -62,7 +64,7 @@ namespace MvcHangman.Controllers
                 else
                 {
                     
-                    if (IsVictory3(gameInfo))
+                    if (IsVictory2(gameInfo))
                     {
                         return RedirectToAction("Victory", "Hangman");
                     }
@@ -78,7 +80,6 @@ namespace MvcHangman.Controllers
             .Select(number => (char)number)
             .Where(c => gameInfo.letterUsed.Contains(c) == false)
             .ToArray());
-
             ModelState.Clear();
             return View(gameInfo);
         }

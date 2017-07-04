@@ -68,8 +68,11 @@
    @foreach (var a in Model.lettersAvailable)
      {
        @Html.Raw((char)a + ", ");
+      // @Model.lettersAvailable = Model.lettersAvailable.TrimEnd(',');
+     
+      }
+
        
-    }  
      </div>
     @using (Html.BeginForm())
     { 
