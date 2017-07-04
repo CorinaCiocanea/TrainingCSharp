@@ -13,30 +13,35 @@ namespace MvcXAnd0.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(new  List<MvcXAnd0.Models.Coord>());
         }
         [HttpPost]
-        public ActionResult Index()
+        public ActionResult Index(Coord model)
         {
 
-            Coord inf = new Coord();
-            Random rand = new Random();
-            inf.CoordX = inf.Row;
-            inf.CoordY = inf.Column;
-            inf.Row = rand.Next();
+             Coord inf = new Coord();
+             Random rand = new Random();
+             inf.CoordX = rand.Next(3);
+             inf.CoordY = rand.Next(3);
+             inf.Player = Player.O;
+            //inf.Row = rand.Next();
 
-            Player currentPlayer = Player.X;
-            if (currentPlayer == Player.X)
-            {
-                currentPlayer = Player.O;
-            }
-            else
-                if (currentPlayer == Player.O)
-                {
-                    currentPlayer = Player.X;
+            //Player currentPlayer = Player.X;
+            //if (currentPlayer == Player.X)
+            //{
+            //    currentPlayer = Player.O;
+            //}
+            //else
+            //    if (currentPlayer == Player.O)
+            //    {
+            //        currentPlayer = Player.X;
                     
-                }
-            return View();
+            //    }
+            model.Player = Player.X;
+            var game = new List<MvcXAnd0.Models.Coord>();
+            game.Add(model);
+            game.Add(inf);
+            return View(model);
         }
 
     }

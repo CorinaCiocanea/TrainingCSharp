@@ -54,34 +54,24 @@ namespace MvcHangman.Controllers
 
                 if (gameInfo.numberChoices == 0)
                 {
-                  
-                    //gameInfo.numberChoices = 5;
+
+
                     return RedirectToAction("GameOver", "Hangman");
-                   // won = false;
+                    // won = false;
                 }
-                //else
-                //{
-                //    return RedirectToAction("Victory", "Hangman");
-                //}
-                //if (gameInfo.numberChoices == 0)
-                //{
-                //    gameInfo.numberChoices = 5;
-                //    return RedirectToAction("GameOver", "Hangman");
-                //}
-                //if (gameInfo.letterUsed.Contains(gameInfo.hiddenWorld) == true)
-                //{
-                //    gameInfo.numberChoices = 5;
-                //}
+                else
+                {
+                    
+                    if (IsVictory3(gameInfo))
+                    {
+                        return RedirectToAction("Victory", "Hangman");
+                    }
+                
+                }
+                
 
             }
-            //if (worlds.Contains(gameInfo.hiddenWorld))
-            //{
-            //  return RedirectToAction("Victory", "Hangman");
-            //}
-            //if (won)
-            //{
-            //    return RedirectToAction("Victory", "Hangman");
-            //}
+           
 
             gameInfo.letterNext = ' ';
             gameInfo.lettersAvailable = new string(Enumerable.Range(65, 26)
@@ -100,6 +90,60 @@ namespace MvcHangman.Controllers
         {
             return View();
         }
+        private bool IsVictory1(GameInfo gameInfo)
+        {
+            int countLetters = 0;
+            bool continueGame = false;
+            foreach (char c in gameInfo.hiddenWorld)
+            {
+                if (gameInfo.letterUsed.Contains(Char.ToUpper(c)) == false)
+                {
+                    continueGame = true;
+                    break;
+                }
+                else
+                {
+                    countLetters++;
+                }
+                //return continueGame == false;
+            }
+            return continueGame == false;
+        }
+
+        private bool IsVictory2(GameInfo gameInfo)
+        {
+            int countLetters = 0;
+            foreach (char c in gameInfo.hiddenWorld)
+            {
+                if (gameInfo.letterUsed.Contains(Char.ToUpper(c)))
+                {
+                    countLetters++;
+                }
+                
+            }
+            return gameInfo.hiddenWorld.Length == countLetters;
+        
+        }
+
+        private bool IsVictory3(GameInfo gameInfo)
+        {
+            int countLetters = 0;
+            //bool continueGame = false;
+            foreach (char c in gameInfo.letterUsed)
+            {
+                if (gameInfo.hiddenWorld.Contains(Char.ToUpper(c)))
+                {
+                    countLetters++;
+                }
+
+            }
+            return gameInfo.letterUsed.Length == countLetters;
+
+        }
+
+
+
+        
 
     }
 
