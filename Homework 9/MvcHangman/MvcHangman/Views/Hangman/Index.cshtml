@@ -65,13 +65,41 @@
 </div>
     <div>
         Letters: still available:
-   @foreach (var a in Model.lettersAvailable)
+        @Model.str
+
+
+    @* @foreach (var a in Model.lettersAvailable)
      {
        @Html.Raw((char)a + ", ");
       // @Model.lettersAvailable = Model.lettersAvailable.TrimEnd(',');
      
-      }
+      }*@
+       @* @for (char c = 'A'; c <= Model.lettersAvailable.Length; c++)
+        {
+           // if((char)a != null)
+            if(c < Model.lettersAvailable.Length)
+            {
+             Html.Raw(c + ", ");
+             c++;
+            }
+        }*@
+       
+      @* @for (char c = 'A'; c <= 'Z'; c++)
+        {
+            var items = string.Join("",c, ",");
+            @Html.Raw(items.TrimEnd(','));
+        
+        }*@
+      @* 
+       @foreach (var item in Model.lettersAvailable)
+       {
+           string str1 = "";
+           str1 = str1 + item + ",";
+                                
+           @Html.Raw(str1)
+       }*@
 
+                               
        
      </div>
     @using (Html.BeginForm())
@@ -81,7 +109,7 @@
            @Html.HiddenFor(m => m.hiddenWorld)
            @Html.HiddenFor(m => m.letterUsed)
            @Html.TextBoxFor(m => m.letterNext) <button type="submit">Try</button>
-           @Html.ActionLink("Try", "Index")
+           @Html.ValidationMessageFor(m => m.letterNext)
 
        </div>
     }

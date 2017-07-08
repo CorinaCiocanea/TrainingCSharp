@@ -7,7 +7,7 @@ namespace MvcOrderItems2.Models
 {
     public class ItemList
     {
-        //public int NumberAdd { get; set; }
+        public int NumberAdd { get; set; }
         public List<ItemsInfo> Items { get; set; }
         public ItemList()
         {

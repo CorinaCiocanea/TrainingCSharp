@@ -1,0 +1,19 @@
+﻿@model MvcOrderItems2.Models.ItemsInfo
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+How many numbers do you need to sort?
+ @using (Html.BeginForm("InsertNumbers", "OrderItems2"))
+    { 
+       <div>
+          
+           @Html.TextBox("count") <button type="submit">Next</button>
+           
+
+       </div>
+     
+    }

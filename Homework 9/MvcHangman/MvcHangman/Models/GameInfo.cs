@@ -12,6 +12,7 @@ namespace MvcHangman.Models
         public string letterUsed { get; set; }
 
         public string lettersAvailable { get; set; }
+        public string str { get; set; }
 
         //[RegularExpression("([a-zA-Z0-9 .&'-]+)", ErrorMessage = "Enter only alphabets and numbers of First Name")]
         //[RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only please")]

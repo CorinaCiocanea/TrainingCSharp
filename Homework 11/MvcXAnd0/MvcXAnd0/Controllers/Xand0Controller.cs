@@ -13,10 +13,16 @@ namespace MvcXAnd0.Controllers
 
         public ActionResult Index()
         {
-            return View(new List<MvcXAnd0.Models.Coord>());
+            GameModel model = new GameModel()
+            {
+                CurrentGame = new List<Coord>(),
+                EditCoordonate = new Coord()
+            };
+            HttpContext.Session["game"] = model.CurrentGame;
+            return View(model);
         }
         [HttpPost]
-        public ActionResult Index(Coord model)
+        public ActionResult Index(GameModel x)
         {
 
             Coord inf = new Coord();
@@ -24,32 +30,28 @@ namespace MvcXAnd0.Controllers
             inf.CoordX = rand.Next(3);
             inf.CoordY = rand.Next(3);
             inf.Player = Player.O;
-            inf.Row = rand.Next();
-
-            int nrmove = 0;
-            bool winner = false;
-
-            while (!winner && nrmove < 9)
-            {
-               
-            
-            }
-            //Player currentPlayer = Player.X;
-            //if (currentPlayer == Player.X)
+            x.CurrentGame = (List<Coord>)HttpContext.Session["game"];
+            //if (x.CurrentGame == null)
             //{
-            //    currentPlayer = Player.O;
+            //    x.CurrentGame = new List<Coord>();
             //}
-            //else
-            //    if (currentPlayer == Player.O)
-            //    {
-            //        currentPlayer = Player.X;
-                    
-            //    }
-             model.Player = Player.X;
-             var game = new List<MvcXAnd0.Models.Coord>();
-             game.Add(model);
-            game.Add(inf);
-            return View(model);
+            x.CurrentGame.Add(inf);
+            x.EditCoordonate.Player = Player.X;
+            x.CurrentGame.Add(x.EditCoordonate);
+
+            HttpContext.Session["game"] = x.CurrentGame;
+            x.EditCoordonate = new Coord();
+            //if (x.CurrentGame.Count > 0)
+            //{
+            //    if (x.CurrentGame.Exists(x => (x.CoordX == inf.CoordX) && (x.CoordY == inf.CoordY)))
+            //        return false;
+            //    x.EditCoordonate[inf.CoordX, inf.CoordY] = Player;
+            //    x.CurrentGame.Add(x.EditCoordonate);
+            //    return true;
+            //}
+            
+            
+            return View(x);
         }
 
     }

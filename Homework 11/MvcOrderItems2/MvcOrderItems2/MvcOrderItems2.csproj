@@ -95,6 +95,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderItems2Controller.cs" />
     <Compile Include="Controllers\OrderItemsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +195,10 @@
     <Content Include="Views\OrderItems\Index.cshtml" />
     <Content Include="Views\OrderItems\InsertNumbers.cshtml" />
     <Content Include="Views\OrderItems\SortedNumbers.cshtml" />
+    <Content Include="Views\OrderItems2\Index.cshtml" />
+    <Content Include="Views\OrderItems2\InsertNumbers.cshtml" />
+    <Content Include="Views\OrderItems2\SortedNumbers.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

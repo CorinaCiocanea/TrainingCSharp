@@ -1,0 +1,19 @@
+﻿@model MvcOrderItems2.Models.ItemsInfo
+@{
+    ViewBag.Title = "InsertNumbers";
+}
+
+<h2>InsertNumbers</h2>
+ @using (Html.BeginForm("SortedNumbers", "OrderItems2"))
+    { 
+       <div>
+          @for (int i = 0;  i < Model.NumberAdd; i++)
+          {
+              <div>
+                   Html.TextBox("value")
+              </div>
+          }
+           <input type="submit" value="Sort" />
+       </div>
+     
+    } 

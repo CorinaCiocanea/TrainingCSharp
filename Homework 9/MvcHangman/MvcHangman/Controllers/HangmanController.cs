@@ -20,7 +20,7 @@ namespace MvcHangman.Controllers
         public ActionResult Index()
         {
 
-
+           
             Random random = new Random();
             int index = random.Next(worlds.Count - 1);
             GameInfo gameInfo = new GameInfo()
@@ -29,12 +29,15 @@ namespace MvcHangman.Controllers
                 letterUsed = "A",
                 lettersAvailable = new string(Enumerable.Range(65, 26)
                     .Select(number => (char)number)
+                    //.Where(c => gameInfo.letterUsed.Contains(Char.ToLower(c)) == false && gameInfo.letterUsed.Contains(c) == false)
                     .ToArray()),
                 letterNext = ' '
             };
-            gameInfo.lettersAvailable = gameInfo.lettersAvailable.Remove(gameInfo.lettersAvailable.Length - 1);
-            gameInfo.lettersAvailable = gameInfo.lettersAvailable.TrimEnd(',');
-            gameInfo.numberChoices = 2;
+            foreach (var item in gameInfo.lettersAvailable)
+                gameInfo.str = gameInfo.str + item + ",";
+            gameInfo.str = gameInfo.str.Remove(gameInfo.str.Length - 1);
+            
+            gameInfo.numberChoices = 5;
             gameInfo.lettersAvailable = new string(gameInfo.lettersAvailable.Where(element => gameInfo.letterUsed.Contains(element) == false).ToArray());
 
             return View(gameInfo);
@@ -43,9 +46,13 @@ namespace MvcHangman.Controllers
         [HttpPost]
         public ActionResult Index(GameInfo gameInfo)
         {
-            gameInfo.numberChoices = 2;
-          //  bool won = true;
-            gameInfo.letterUsed += gameInfo.letterNext;
+            if (ModelState.IsValid)
+            {
+                gameInfo.letterUsed += gameInfo.letterNext;
+                ModelState.Clear();
+            }
+            gameInfo.numberChoices = 5;
+           // gameInfo.letterUsed += gameInfo.letterNext;
             foreach (var alfa in gameInfo.letterUsed)
             {
                 if (gameInfo.hiddenWorld.Contains(Char.ToLower(alfa)) == false)
@@ -64,7 +71,7 @@ namespace MvcHangman.Controllers
                 else
                 {
                     
-                    if (IsVictory2(gameInfo))
+                    if (IsVictory1(gameInfo))
                     {
                         return RedirectToAction("Victory", "Hangman");
                     }
@@ -78,9 +85,13 @@ namespace MvcHangman.Controllers
             gameInfo.letterNext = ' ';
             gameInfo.lettersAvailable = new string(Enumerable.Range(65, 26)
             .Select(number => (char)number)
-            .Where(c => gameInfo.letterUsed.Contains(c) == false)
+            .Where(c => gameInfo.letterUsed.Contains(Char.ToLower(c)) == false && gameInfo.letterUsed.Contains(c) == false)
             .ToArray());
-            ModelState.Clear();
+           // ModelState.Clear();
+            foreach (var item in gameInfo.lettersAvailable)
+                gameInfo.str = gameInfo.str + item + ",";
+            gameInfo.str = gameInfo.str.Remove(gameInfo.str.Length - 1);
+            
             return View(gameInfo);
         }
         public ActionResult GameOver()
@@ -97,7 +108,7 @@ namespace MvcHangman.Controllers
             bool continueGame = false;
             foreach (char c in gameInfo.hiddenWorld)
             {
-                if (gameInfo.letterUsed.Contains(Char.ToUpper(c)) == false)
+                if (gameInfo.letterUsed.Contains(Char.ToLower(c)) == false )
                 {
                     continueGame = true;
                     break;
@@ -132,13 +143,9 @@ namespace MvcHangman.Controllers
             //bool continueGame = false;
             foreach (char c in gameInfo.letterUsed)
             {
-                if (gameInfo.hiddenWorld.Contains(Char.ToUpper(c)))
-                {
-                    countLetters++;
-                }
-
+                countLetters = countLetters + gameInfo.hiddenWorld.Count(h => h == Char.ToLower(c));
             }
-            return gameInfo.letterUsed.Length == countLetters;
+            return gameInfo.hiddenWorld.Length == countLetters;
 
         }
 
