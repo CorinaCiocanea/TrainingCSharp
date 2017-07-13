@@ -1,10 +1,10 @@
-﻿@*@model List<MvcXAnd0.Models.Coord>
-*@
+﻿@model List<MvcXAnd0.Models.Coord>
+
 @using MvcXAnd0.Models;
 @using System.Linq;
 
 @model GameModel
-@using MvcXAnd0.Models;
+
 
 @{
     ViewBag.Title = "Index";
@@ -48,7 +48,13 @@
 </div>
 Select coordinates:
  </div>
-@using (Html.BeginForm()) {
+@if (Model.GameEnded)
+{
+  @Html.Raw(Model.Message)
+}
+else
+{
+   using (Html.BeginForm()) {
     
  
         
@@ -67,6 +73,6 @@ Select coordinates:
         <p>
             <input  id="new" type="submit" value="Submit" />
         </p>
-       
+}   
     
 }

@@ -9,5 +9,7 @@ namespace MvcXAnd0.Models
     {
         public List<Coord> CurrentGame { get; set; }
         public Coord EditCoordonate { get; set; }
+        public string Message { get; set; }
+        public bool GameEnded { get; set; }
     }
 }

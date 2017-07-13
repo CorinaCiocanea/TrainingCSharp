@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Models\Coord.cs" />
     <Compile Include="Models\GameModel.cs" />
+    <Compile Include="Models\PlayerWinner.cs" />
     <Compile Include="Models\TableGames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

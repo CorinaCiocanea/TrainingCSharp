@@ -11,13 +11,35 @@ namespace ProjectFruit
         private bool withSeeds = false;
         public string fruitWithSeeds { get; set; }
         public string fruitWithoutSeeds { get; set; }
+             
 
         public Fruit(bool withSeeds)
         {
             this.withSeeds = withSeeds;
         }
-        public void getDescription(string s)
+        public int getDescription(int[] fruitArray, int key)
         {
+            int min = 0;
+            int max = fruitArray.Length - 1;
+            while (min <= max)
+            {
+                int m = min + (max - min)/2;
+                if (key == fruitArray[m])
+                {
+                    return m;
+                  
+                }
+                else if (key < fruitArray[m])
+                {
+                    max = m - 1;
+                }
+                else
+                {
+                    min = m + 1;
+                }
+            
+            }
+            return -1;
           
         }
         public string isWithSeeds()

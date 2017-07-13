@@ -22,36 +22,111 @@ namespace MvcXAnd0.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Index(GameModel x)
+        public ActionResult Index(GameModel game)
         {
 
-            Coord inf = new Coord();
+            Coord generateCoordinate = new Coord();
             Random rand = new Random();
-            inf.CoordX = rand.Next(3);
-            inf.CoordY = rand.Next(3);
-            inf.Player = Player.O;
-            x.CurrentGame = (List<Coord>)HttpContext.Session["game"];
-            //if (x.CurrentGame == null)
-            //{
-            //    x.CurrentGame = new List<Coord>();
-            //}
-            x.CurrentGame.Add(inf);
-            x.EditCoordonate.Player = Player.X;
-            x.CurrentGame.Add(x.EditCoordonate);
+            var pointIndex = rand.Next(9 - game.CurrentGame.Count + 1);
+            int availableIndex = 0;
+            int i = 0;
+            while(availableIndex != pointIndex && i < 3)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (game.CurrentGame.Any(x => x.CoordX == i && x.CoordY == j) == false)
+                    {
+                        availableIndex++;
+                        if (availableIndex == pointIndex)
+                        {
+                            generateCoordinate.CoordX = i;
+                            generateCoordinate.CoordY = j;
+                            generateCoordinate.Player = Player.O;
+                            break;
+                        }
+                    }
+                }
+                i++;
+            }
+            
 
-            HttpContext.Session["game"] = x.CurrentGame;
-            x.EditCoordonate = new Coord();
-            //if (x.CurrentGame.Count > 0)
-            //{
-            //    if (x.CurrentGame.Exists(x => (x.CoordX == inf.CoordX) && (x.CoordY == inf.CoordY)))
-            //        return false;
-            //    x.EditCoordonate[inf.CoordX, inf.CoordY] = Player;
-            //    x.CurrentGame.Add(x.EditCoordonate);
-            //    return true;
-            //}
-            
-            
-            return View(x);
+            bool coordGenerated = false;
+            while (coordGenerated == false)
+            {
+                generateCoordinate.CoordX = rand.Next(3);
+                generateCoordinate.CoordY = rand.Next(3);
+                generateCoordinate.Player = Player.O;
+                if (game.CurrentGame.Count > 0)
+                {
+                    if (game.CurrentGame.Exists(g => (g.CoordX == generateCoordinate.CoordX) &&
+                                                    (g.CoordY == generateCoordinate.CoordY)) != true)
+                    {
+                        coordGenerated = true;
+                    }
+
+                }
+                
+            }
+            game.CurrentGame = (List<Coord>)HttpContext.Session["game"];
+            //game.CurrentGame.Add(generateCoordinate);
+            game.EditCoordonate.Player = Player.X;
+            game.CurrentGame.Add(game.EditCoordonate);
+            if (GameEnd(game, Player.X))
+            {
+                game.GameEnded = true;
+                game.Message = "Player X";
+            }
+            game.CurrentGame.Add(GenerateCoordinate(game));
+            if (GameEnd(game, Player.X))
+            {
+                game.GameEnded = true;
+                game.Message = "Player X";
+            }
+            HttpContext.Session["game"] = game.CurrentGame;
+            game.EditCoordonate = new Coord();
+
+            return View(game);
+        }
+        private bool GameEnd(GameModel game, Player play)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (game.CurrentGame.Where(x => x.CoordX == i).Count(x => x.Player == play) == 3)
+                {
+                    return true;
+                }
+            }
+            for (int j = 0; j < 3; j++)
+            {
+                if (game.CurrentGame.Where(x => x.CoordX == j).Count(x => x.Player == play) == 3)
+                {
+                    return true;
+                }
+            }
+            if (game.CurrentGame.Where(x => x.CoordX == x.CoordY).Count(x => x.Player == play) == 3)
+            {
+                return true;
+            }
+            if (game.CurrentGame.Where(x => x.CoordY + x.CoordX == 2).Count(x => x.Player == play) == 3)
+            {
+                return true;
+            }
+            return false;
+        }
+        private Coord GenerateCoordinate(GameModel game)
+        {
+            Coord generateCoordinate = new Coord();
+            Random rand = new Random();
+            var pointIndex = rand.Next(9 - game.CurrentGame.Count);
+
+            var pointsUsed = game.CurrentGame.Select(point => point.CoordX * 3 + point.CoordY);
+            var possiblePoints = Enumerable.Range(0, 8).Where(point => pointsUsed.Contains(point) == false).ToArray();
+            int generatedPoint = possiblePoints[pointIndex];
+            generateCoordinate.CoordX = generatedPoint / 3;
+            generateCoordinate.CoordY = generatedPoint % 3;
+            generateCoordinate.Player = Player.O;
+
+            return generateCoordinate;
         }
 
     }

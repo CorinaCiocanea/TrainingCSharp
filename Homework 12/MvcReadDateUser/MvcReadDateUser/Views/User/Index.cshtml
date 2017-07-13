@@ -1,0 +1,109 @@
+﻿@model MvcReadDateUser.Models.UserInfo
+
+  @using MvcReadDateUser.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Display message"))
+{
+    <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+    <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName )
+        </div>
+    <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+    <div class="editor-field">
+            @Html.EditorFor(model => model.LastName )
+        </div>
+    <div class="editor-label">
+            @Html.LabelFor(model => model.Birthdate)
+        </div>
+    <div class="editor-field">
+            @*@Html.EditorFor(model => model.Birthdate )*@
+         @Html.TextBoxFor(m => m.Birthdate, new {id = "Birthdate", @class="datetime", type = "datetime"})
+        </div>
+    <div class="editor-label">
+            @Html.LabelFor(model => model.Age)
+        </div>
+    <div class="editor-field">
+            @Html.EditorFor(model => model.Age )
+        </div>
+    <div class="editor-label">
+            @Html.LabelFor(model => model.Sex)
+        </div>
+    <div class="editor-field">
+        Male:   @Html.RadioButton("Sex","Male")  
+        Female: @Html.RadioButton("Sex","Female")  
+        </div>
+    <div class="editor-label">
+            @Html.LabelFor(model => model.Hobby)
+        </div>
+    <div class="editor-field">
+            @Html.DropDownListFor(model => model.Hobby, new SelectList(Enum.GetValues(typeof(Hobby))).OrderBy(l => l.Text), "Select Hobby" )
+        </div>
+
+    <p>
+            <input  id="new1" type="submit" value="Submit" />
+        </p>
+    <p>
+            <input  id="new2" type="submit" value="Display message" />
+        </p>
+    @Html.TextBox("Message", "Hello", new { @class = "form-control" })  
+    
+    <div>
+        @*<form>
+  <input type="radio" class="button" id="Male" name="gender"></input>
+  <label for="Male">Male</label>
+  <input type="radio" class="button" id="Female" name="gender"></input>
+  <label for="Female">Female</label>
+</form>*@
+
+    </div>
+    <div id="gen"> 
+    <input type="radio" class="button" id="Male" name="gender"> <label for="Male">Male </label>
+    <input type="radio" class="button" id="Female" name="gender"><label for="Female">Female</label>
+</div>
+}
+<script>
+    //$(document).ready(function () {
+    //    $('label').click(function () {
+    //        $('label').removeClass('yellowBackground');
+    //        $(this).addClass('yellowBackground');
+    //    });
+    //});
+
+    $(document).ready(function(){
+        $("input[name=gender]").click(function() {
+            $("#gen > label").addClass('yellow');
+        }
+        }); 
+    });
+    
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("The id is :" + $('.datetime').attr("id"));
+        $('.datetime').datepicker({
+            dateFormat: "dd/M/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-60:+0"
+        });
+
+    });
+</script>  
+<script>
+    $('#new1').val($('#new2').val());
+
+</script>
+
+
+

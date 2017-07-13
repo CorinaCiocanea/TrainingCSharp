@@ -1,0 +1,141 @@
+﻿body
+{
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+.editor-label 
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+    margin:0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  display: table-cell;
+  content: '';
+}
+ 
+*:after { clear: both; }
+body { font-family: helvetica, arial, sans-serif; }
+
+.container {
+
+  margin: 0 auto;
+  width: 200px;
+}
+
+.calculator {
+  padding: 5px;
+  margin-top: 10px;
+  background-color: #00ff00;
+  border-radius: 10px;
+  font-size: 10%;
+}
+
+.calculator > input[type=text] {
+  width: 28%;
+  height: 50px;
+  border: none;
+  background-color: #eee;
+  text-align: right;
+  font-size: 30px;
+  padding-right: 10px;
+}
+
+.calculator .row { margin-top: 10px; }
+ 
+.calculator .key {
+  width: 78.7px;
+  display: inline-block;
+  background-color: blue;
+  color: white;
+  font-size: 1rem;
+  margin-right: 10px;
+  border-radius: 30px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+.calculator .key:hover { cursor: pointer; }
+
+.key.last { margin-right: 50px; }
+
+.key.action { background-color: #333333; }
+
+
+
+
+
