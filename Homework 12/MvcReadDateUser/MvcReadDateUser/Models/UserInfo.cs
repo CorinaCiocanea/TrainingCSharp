@@ -18,8 +18,8 @@ namespace MvcReadDateUser.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime Birthdate { get; set; }
-        public int Age { get; set; }
+        public DateTime? Birthdate { get; set; }
+        public int? Age { get; set; }
         public string Sex { get; set; }
         public Hobby? Hobby { get; set; }
         public string Message { get; set; }

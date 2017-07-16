@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
 <h2>Index</h2>
 
 @using (Html.BeginForm("Display message"))
@@ -14,13 +14,13 @@
             @Html.LabelFor(model => model.FirstName)
         </div>
     <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName )
+            @Html.EditorFor(model => model.FirstName, new { id = "Fname"})
         </div>
     <div class="editor-label">
             @Html.LabelFor(model => model.LastName)
         </div>
     <div class="editor-field">
-            @Html.EditorFor(model => model.LastName )
+            @Html.EditorFor(model => model.LastName, new { id = "Sname" })
         </div>
     <div class="editor-label">
             @Html.LabelFor(model => model.Birthdate)
@@ -38,10 +38,15 @@
     <div class="editor-label">
             @Html.LabelFor(model => model.Sex)
         </div>
-    <div class="editor-field">
+    @*<div class="editor-field">
         Male:   @Html.RadioButton("Sex","Male")  
         Female: @Html.RadioButton("Sex","Female")  
-        </div>
+        </div>*@
+   
+    <div id="gen"> 
+    <input type="radio" class="button" id="Male" name="gender" value="male"> <label for="Male">Male </label>
+    <input type="radio" class="button" id="Female" name="gender" value="female"><label for="Female">Female</label>
+</div>
     <div class="editor-label">
             @Html.LabelFor(model => model.Hobby)
         </div>
@@ -50,40 +55,77 @@
         </div>
 
     <p>
-            <input  id="new1" type="submit" value="Submit" />
+            <input  id="submitButton" type="submit" value="Submit" />
         </p>
     <p>
-            <input  id="new2" type="submit" value="Display message" />
+            <input  id="displayMessage" type="submit" value="Display message"  />
         </p>
-    @Html.TextBox("Message", "Hello", new { @class = "form-control" })  
-    
-    <div>
-        @*<form>
-  <input type="radio" class="button" id="Male" name="gender"></input>
-  <label for="Male">Male</label>
-  <input type="radio" class="button" id="Female" name="gender"></input>
-  <label for="Female">Female</label>
-</form>*@
+    @Html.TextBox("Message", "Hello", new { @class = "form-control", @id="messageTxt" })  
 
-    </div>
-    <div id="gen"> 
-    <input type="radio" class="button" id="Male" name="gender"> <label for="Male">Male </label>
-    <input type="radio" class="button" id="Female" name="gender"><label for="Female">Female</label>
-</div>
+    <span id="submitdata"></span>
+ 
+  
 }
 <script>
+    $(document).ready(function() {
+        $("#displayMessage").click(function(e) {
+            e.preventDefault();
+            var fname = $("#Fname").val();
+            var sname = $("#Sname").val();
+            if(!(fname == '' || sname == '')) {
+                $("#messageTxt").empty();
+                $("#messageTxt").append("FirstName: " + fname + "<br/>LastName: " + sname);
+                } else {
+                alert("Please complete the fields.");
+            }
+        });
+    
+    });
+
+</script>
+<script>
+    //$("#messageTxt").kendoNumericTextBox();
+
+    //var numerictextbox = $("#messageTxt);
+
+    //var setValue = function () {
+    //    numerictextbox.value($("#Id").val());
+    //};
+    //$("#displayMessage").click(setValue);
+
+</script>
+<script>
     //$(document).ready(function () {
-    //    $('label').click(function () {
-    //        $('label').removeClass('yellowBackground');
-    //        $(this).addClass('yellowBackground');
-    //    });
+    //    $('#displayMessage').click(function () {
+    //        $('#messageTxt').val('#Id');
+    //    }
+    //    );
     //});
 
+</script>
+
+<script type="text/javascript">
+    $("button:#Get").click(function () {
+
+        $('#msg').html($('input:textbox').val());
+
+    });
+    </script>
+<script>
     $(document).ready(function(){
-        $("input[name=gender]").click(function() {
-            $("#gen > label").addClass('yellow');
-        }
-        }); 
+        $("input[name=gender]").click(function () {
+            console.log($("form input").length);
+            if ($(this).val() == "male") {
+                $("form input").addClass('blue');
+                $("select").addClass('blue');
+            }
+            if ($(this).val() == "female") {
+                $("form input").addClass('red');
+                $("select").addClass('red');
+            }
+           // console.log($(this).val());
+          }
+        ); 
     });
     
 </script>
@@ -100,10 +142,6 @@
 
     });
 </script>  
-<script>
-    $('#new1').val($('#new2').val());
-
-</script>
 
 
 
