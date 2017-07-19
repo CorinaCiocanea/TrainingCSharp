@@ -80,9 +80,17 @@ textarea
     background-color:yellow;
 }*/
 .blue{
-background: blue;
+color: blue;
 }
 
 .red{
-background: red;
+color: red;
+}
+
+
+.datetime  {
+    margin: 0 auto;
+    width: 920px;
+    padding: 50px 20px;
+    background-color: #fff;
 }

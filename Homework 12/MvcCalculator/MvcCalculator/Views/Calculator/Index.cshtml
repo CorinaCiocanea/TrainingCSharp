@@ -6,70 +6,139 @@
 <script src="ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="calculator.js"></script>
 
-<div class="calc">  
-<p>Calculater</p>  
-<div class="calc-in">  
-<form id="calcform">  
-<input id="display" type="text" value="0">  
-<div class="num-wrap">  
-<button id="n7" value="7">7</button>  
-<button id="n8" value="8">8</button>  
-<button id="n9" value="9">9</button>  
-<button id="ndiv" value="/">/</button>  
-<button id="nmod" value="%">%</button>  
-<button id="n4" value="4">4</button>  
-<button id="n5" value="5">5</button>  
-<button id="n6" value="6">6</button>  
-<button id="nmul" value="*">*</button>  
-<button id="nC" value="C">C</button>  
-<button id="n1" value="1">1</button>  
-<button id="n2" value="2">2</button>  
-<button id="n3" value="3">3</button>  
-<button id="nsub" value="-">-</button>  
-<button id="neq" vlaue="=">=</button>  
-<button id="n0" value="0">0</button>  
-<button id="nP" value=".">.</button>  
-<button id="nadd" vlaue="+">+</button>  
-</div>  
-</form>  
-</div>  
-</div> 
+<div class="calculator">
+    <p>Calculator</p>
+    <div class="results">
+        <input id="history" class="history" value="2+3+5" />
+        <input id="result" class="result"/>
+    </div>
+  
+    <div>
+        <input type="button" value="C"/>
+        <input type="button" value="CE"/>
+        <input type="button" value="back"/>
+        <input type="button" value="/">
+    </div>
+    <div>
+        <input type="button" value="7"/>
+        <input type="button" value="8"/>
+        <input type="button" value="9"/>
+        <input type="button" value="X">
+    </div>
+    <div>
+        <input type="button" value="4" />
+        <input type="button" value="5" />
+        <input type="button" value="6" />
+        <input type="button" value="-">
+    </div>
+    <div>
+        <input type="button" value="1" />
+        <input type="button" value="2" />
+        <input type="button" value="3" />
+        <input type="button" value="+">
+    </div>
+    <div>
+        <input type="button" value="+/-" />
+        <input type="button" value="0" />
+        <input type="button" value="." />
+        <input type="button" value="=">
+    </div>
+</div>
 
 <script>
 
-    $(function () {
-        //Calc Object with display,clear,doCal methods 
-        var Calc = {
-            display: function (v) {
-                $("#display").val(v);
-            },
-            clear: function () {
-                $("#display").val(" ");
-            },
-            doCal: function (val) {
-                var result = "";
-                var dtemp = $("#display").val();
-                if (dtemp == "0") {
-                    this.clear();
-                    result = val;
-                } else if (val == "c") {
-                    this.clear();
-                } else if (val == "=") {
-                    result = eval(dtemp);
-                } else {
-                    result = dtemp + val;
-                }
-                this.display(result);
+    //$(document).ready(function(e) {
+    //    $('#1,#2,#3,#4,#5,#6,#7,#8,#9,#0').click(function(){
+    //        var v = $(this).val();
+    //        $('#result').val($('#result').val() + v);	
+    //    });
+    //   window.alert("heloo");
+    //    $('C').click(function(){
+    //        $('#result').val('');
+    //        $('#operation').val('');
+    //        $('#operation').removeClass('activeAnswer');
+    //        $('#equals').attr('onclick','');
+    //    });
+
+//    <script type="text/javascript">
+//    $(".calculator").on('click',function(){
+//    if($(this).attr('data-role')!='operator'){
+//        $(".result").val($(".result").val() + $(this).val());
+//    }
+//    else{
+//        if ($(".result").val() != '') {
+//            $(".result").val($(".result").val() + $(this).val());
+//        }
+//    }
+//});
+
+
+    $(document).ready(function () {
+        var result = 0;
+        var prevEntry = 0;
+        var operation = null;
+        var currentEntry = '0';
+        updateScreen(result);
+
+        $(':button').on('click', function (evt) {
+            var buttonPressed = $(this).html();
+            console.log(buttonPressed);
+
+            if (buttonPressed === "C") {
+                result = 0;
+                currentEntry = '0';
+            } else if (buttonPressed === "CE") {
+                currentEntry = '0';
+            } else if (buttonPressed === "back") {
+
+            } else if (buttonPressed === "+/-") {
+                currentEntry *= -1;
+            } else if (buttonPressed === '.') {
+                currentEntry += '.';
+            } else if (isNumber(buttonPressed)) {
+                if (currentEntry === '0') currentEntry = buttonPressed;
+                else currentEntry = currentEntry + buttonPressed;
+            } else if (isOperator(buttonPressed)) {
+                prevEntry = parseFloat(currentEntry);
+                operation = buttonPressed;
+                currentEntry = '';
+            } else if (buttonPressed === '%') {
+                currentEntry = currentEntry / 100;
+            } else if (buttonPressed === 'sqrt') {
+                currentEntry = Math.sqrt(currentEntry);
+            } else if (buttonPressed === '1/x') {
+                currentEntry = 1 / currentEntry;
+            } else if (buttonPressed === 'pi') {
+                currentEntry = Math.PI;
+            } else if (buttonPressed === '=') {
+                currentEntry = operate(prevEntry, currentEntry, operation);
+                operation = null;
             }
-        }
-        //Keyboard key press event. 
-        $("body").keypress(function (e) {
-            Calc.doCal(String.fromCharCode(e.which));
-        });
-        //calc UI click events 
-        $('.calc button').click(function (e) {
-            e.preventDefault();
-            Calc.doCal(this.value);
+
+            updateScreen(currentEntry);
         });
     });
+
+    updateScreen = function (displayValue) {
+        var displayValue = displayValue.toString();
+        $('.result').html(displayValue.substring(0, 10));
+    };
+
+    isNumber = function (value) {
+        return !isNaN(value);
+    }
+
+    isOperator = function (value) {
+        return value === '/' || value === '*' || value === '+' || value === '-';
+    };
+
+    operate = function (a, b, operation) {
+        a = parseFloat(a);
+        b = parseFloat(b);
+        console.log(a, b, operation);
+        if (operation === '+') return a + b;
+        if (operation === '-') return a - b;
+        if (operation === '*') return a * b;
+        if (operation === '/') return a / b;
+    }
 </script>
