@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="word">
+	</div>
+
+    <div class="keyboard"></div>
+	</div>
+<div id="buttons"></div>
+<script>
+
+    
+
+       var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+        wordsList = ["alfabet", "masina", "carte", "barca"],
+        buttons = [];
+      // wordContainer = document.getElementById('word'),
+
+        function keyButtons() {
+            if ($(".keyboard").empty) {
+                for (var i = 0; i < alphabet.length; i++) {
+                    buttons.push('<button>' + alphabet[i] + '</button>');
+                }
+                $(".keyboard").html(buttons.join(""));
+            }
+        }
+        //function randomWord() {
+        //    selected = Math.floor(Math.random() * wordsList.length);
+        //    word = wordsList[selected].split
+        //    lengthWord = word.length;
+        //    letterWord = []
+
+        //    for (i = 0; i < lengthWord; i++)
+        //    {
+        //        letterWord[i] = document.createElement("word");
+        //        letterWord[i].innerHTML = "_";
+        //        wordContainer.appendChild(letterWord[i]);
+        //    }
+        //}
+     
+        
+        keyButtons();
+        
+  
+        
+</script>
