@@ -160,6 +160,15 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\hangman-1.png" />
+    <Content Include="Images\hangman-2.png" />
+    <Content Include="Images\hangman-3.png" />
+    <Content Include="Images\hangman-4.png" />
+    <Content Include="Images\hangman-5.png" />
+    <Content Include="Images\hangman-6.png" />
+    <Content Include="Images\hangman-7.png" />
+    <Content Include="Images\HangmanSprite.png" />
+    <Content Include="Images\welcome-hangman.png" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

@@ -5,6 +5,11 @@
     ViewBag.Title = "Index";
 }
 
+<section class="hangman-image" >
+      <figure>
+        <img src="Images/welcome-hangman.png" alt="hangman image">
+      </figure>
+    </section>
 <h2>Guess world</h2>
 <h2>
      @foreach (var character in Model.hiddenWorld)
@@ -115,3 +120,18 @@
     }
 
 </h2>
+
+<script>
+
+    var Images = [
+        "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
+         "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
+          "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
+     "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
+     "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
+     "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
+     "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
+    ]
+
+    var imageIndex = 0;
+</script>

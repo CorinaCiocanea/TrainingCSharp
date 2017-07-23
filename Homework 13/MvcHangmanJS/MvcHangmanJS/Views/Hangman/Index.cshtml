@@ -5,9 +5,9 @@
 <h2>Index</h2>
 <div class="word">
 	</div>
-
+<div id="lives"></div>
     <div class="keyboard"></div>
-	</div>
+	
 <div id="buttons"></div>
 <script>
 
@@ -16,8 +16,12 @@
        var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
         wordsList = ["alfabet", "masina", "carte", "barca"],
         buttons = [];
-      // wordContainer = document.getElementById('word'),
-
+        wordContainer = $('.word');
+        var word = wordsList[selected];
+        var live;
+        var success = false;
+        var finish = true;
+        var lengthWord = word.length;
         function keyButtons() {
             if ($(".keyboard").empty) {
                 for (var i = 0; i < alphabet.length; i++) {
@@ -26,23 +30,64 @@
                 $(".keyboard").html(buttons.join(""));
             }
         }
-        //function randomWord() {
-        //    selected = Math.floor(Math.random() * wordsList.length);
-        //    word = wordsList[selected].split
-        //    lengthWord = word.length;
-        //    letterWord = []
+        function randomWord() {
+           var selected = Math.floor(Math.random() * wordsList.length);
+         //  var word = wordsList[selected];
+           //var lengthWord = word.length;
+      
+            for (i = 0; i < lengthWord; i++)
+            {
+                 wordContainer.append(" _ ");
+            }
+          
+        }
 
-        //    for (i = 0; i < lengthWord; i++)
-        //    {
-        //        letterWord[i] = document.createElement("word");
-        //        letterWord[i].innerHTML = "_";
-        //        wordContainer.appendChild(letterWord[i]);
-        //    }
-        //}
+        function checkedLetters(character) {
+
+          //  var word = wordsList[selected];
+
+            for (i = 0; i < lengthWord; i++)
+            {
+                if (word[i] == character) {
+                    wordContainer[i].innerHTML = character;
+                    success = true;
+                
+                }
+
+                if (wordContainer[i].innerHTML == "_") {
+                    finish = false;
+                }
+
+            }
+            if (success === true) {
+
+                success = false;
+            } else {
+                live--;
+            }
+
+            if (live == 0)
+            {
+                gameOver();
+            }
+
+        }
+
+        function gameOver() {
+
+            for (i = 0; i < lengthWord; i++) {
+
+                if (wordContainer[i].innerHTML == "_")
+                {
+                    wordContainer[i].innerHTML = word[i];
+                }
+            }
+
+        }
      
         
         keyButtons();
-        
+        randomWord();
   
         
 </script>
