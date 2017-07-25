@@ -10,7 +10,7 @@ namespace MvcHangman.Models
     {
         public int numberChoices { get; set; }
         public string letterUsed { get; set; }
-
+        public string StatusImage { get; set; }
         public string lettersAvailable { get; set; }
         public string str { get; set; }
 

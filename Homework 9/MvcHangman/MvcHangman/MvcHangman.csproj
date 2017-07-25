@@ -169,6 +169,7 @@
     <Content Include="Images\hangman-7.png" />
     <Content Include="Images\HangmanSprite.png" />
     <Content Include="Images\welcome-hangman.png" />
+    <Content Include="Scripts\hangman.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

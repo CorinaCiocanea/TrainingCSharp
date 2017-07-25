@@ -10,9 +10,11 @@ namespace MvcHangman.Controllers
     public class HangmanController : Controller
     {
         private List<string> worlds;
+        //private readonly int numberOfChoices;
         public HangmanController()
         {
             worlds = new List<string>() { "scoala", "masina", "avion", "carte", "barca", "bicicleta" };
+            //numberOfChoices = 6;
         }
         //
         // GET: /Hangman/
@@ -26,7 +28,7 @@ namespace MvcHangman.Controllers
             GameInfo gameInfo = new GameInfo()
             {
                 hiddenWorld = worlds[index],
-                letterUsed = "A",
+                letterUsed = "",
                 lettersAvailable = new string(Enumerable.Range(65, 26)
                     .Select(number => (char)number)
                     //.Where(c => gameInfo.letterUsed.Contains(Char.ToLower(c)) == false && gameInfo.letterUsed.Contains(c) == false)
@@ -37,9 +39,9 @@ namespace MvcHangman.Controllers
                 gameInfo.str = gameInfo.str + item + ",";
             gameInfo.str = gameInfo.str.Remove(gameInfo.str.Length - 1);
             
-            gameInfo.numberChoices = 5;
+            gameInfo.numberChoices = 7;
             gameInfo.lettersAvailable = new string(gameInfo.lettersAvailable.Where(element => gameInfo.letterUsed.Contains(element) == false).ToArray());
-
+            gameInfo.StatusImage = "~/Images/welcome-hangman.png";
             return View(gameInfo);
         }
 
@@ -51,7 +53,7 @@ namespace MvcHangman.Controllers
                 gameInfo.letterUsed += gameInfo.letterNext;
                 ModelState.Clear();
             }
-            gameInfo.numberChoices = 5;
+              gameInfo.numberChoices = 7;
            // gameInfo.letterUsed += gameInfo.letterNext;
             foreach (var alfa in gameInfo.letterUsed)
             {

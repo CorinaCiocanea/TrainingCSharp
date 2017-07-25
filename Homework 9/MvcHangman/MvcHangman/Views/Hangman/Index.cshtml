@@ -5,11 +5,18 @@
     ViewBag.Title = "Index";
 }
 
-<section class="hangman-image" >
+@*<section class="hangman-image" >
       <figure>
         <img src="Images/welcome-hangman.png" alt="hangman image">
       </figure>
-    </section>
+    </section>*@
+@*<section class="hangman-image" >
+      <figure>
+        <img src=@Url.Content(Model.StatusImage) alt="hangman image">
+      </figure>
+    </section>*@
+
+
 <h2>Guess world</h2>
 <h2>
      @foreach (var character in Model.hiddenWorld)
@@ -53,6 +60,7 @@
         }
        
     </div>*@
+    @Html.Hidden("numberOfChoices", Model.numberChoices, new {@id = "numberOfChoices"})
     <div>
         Number of choices left: 
       @Model.numberChoices
@@ -122,16 +130,11 @@
 </h2>
 
 <script>
+    var choicesLeft = $('#numberOfChoices').val();
+    var rootImage = "/Images/hangman-";
+    var imageIndex = 7 - choicesLeft;
+    var image = rootImage + imageIndex + ".png";
+    $("img").attr('src', image);
 
-    var Images = [
-        "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
-         "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
-          "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
-     "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
-     "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
-     "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
-     "C:\Users\dragos\Git\TrainingCSharp\Homework 9\MvcHangman\MvcHangman\Images\hangman-1.png",
-    ]
-
-    var imageIndex = 0;
+    
 </script>
