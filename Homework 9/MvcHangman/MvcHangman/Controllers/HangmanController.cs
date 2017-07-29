@@ -10,14 +10,13 @@ namespace MvcHangman.Controllers
     public class HangmanController : Controller
     {
         private List<string> worlds;
-        //private readonly int numberOfChoices;
+        private readonly int numberOfChoices;
         public HangmanController()
         {
             worlds = new List<string>() { "scoala", "masina", "avion", "carte", "barca", "bicicleta" };
-            //numberOfChoices = 6;
+            numberOfChoices = 7;
         }
-        //
-        // GET: /Hangman/
+      
 
         public ActionResult Index()
         {
@@ -38,10 +37,10 @@ namespace MvcHangman.Controllers
             foreach (var item in gameInfo.lettersAvailable)
                 gameInfo.str = gameInfo.str + item + ",";
             gameInfo.str = gameInfo.str.Remove(gameInfo.str.Length - 1);
-            
-            gameInfo.numberChoices = 7;
+
+            gameInfo.numberChoices = numberOfChoices;
             gameInfo.lettersAvailable = new string(gameInfo.lettersAvailable.Where(element => gameInfo.letterUsed.Contains(element) == false).ToArray());
-            gameInfo.StatusImage = "~/Images/welcome-hangman.png";
+           // gameInfo.StatusImage = "~/Images/welcome-hangman.png";
             return View(gameInfo);
         }
 
@@ -53,8 +52,8 @@ namespace MvcHangman.Controllers
                 gameInfo.letterUsed += gameInfo.letterNext;
                 ModelState.Clear();
             }
-              gameInfo.numberChoices = 7;
-           // gameInfo.letterUsed += gameInfo.letterNext;
+            gameInfo.numberChoices = numberOfChoices;
+         
             foreach (var alfa in gameInfo.letterUsed)
             {
                 if (gameInfo.hiddenWorld.Contains(Char.ToLower(alfa)) == false)
@@ -68,7 +67,7 @@ namespace MvcHangman.Controllers
 
 
                     return RedirectToAction("GameOver", "Hangman");
-                    // won = false;
+                    
                 }
                 else
                 {
@@ -89,7 +88,7 @@ namespace MvcHangman.Controllers
             .Select(number => (char)number)
             .Where(c => gameInfo.letterUsed.Contains(Char.ToLower(c)) == false && gameInfo.letterUsed.Contains(c) == false)
             .ToArray());
-           // ModelState.Clear();
+         
             foreach (var item in gameInfo.lettersAvailable)
                 gameInfo.str = gameInfo.str + item + ",";
             gameInfo.str = gameInfo.str.Remove(gameInfo.str.Length - 1);
@@ -119,7 +118,7 @@ namespace MvcHangman.Controllers
                 {
                     countLetters++;
                 }
-                //return continueGame == false;
+               
             }
             return continueGame == false;
         }
@@ -142,7 +141,7 @@ namespace MvcHangman.Controllers
         private bool IsVictory3(GameInfo gameInfo)
         {
             int countLetters = 0;
-            //bool continueGame = false;
+            
             foreach (char c in gameInfo.letterUsed)
             {
                 countLetters = countLetters + gameInfo.hiddenWorld.Count(h => h == Char.ToLower(c));

@@ -166,7 +166,7 @@
     <Content Include="Images\hangman-4.png" />
     <Content Include="Images\hangman-5.png" />
     <Content Include="Images\hangman-6.png" />
-    <Content Include="Images\hangman-7.png" />
+    <Content Include="Images\hangman77.png" />
     <Content Include="Images\HangmanSprite.png" />
     <Content Include="Images\welcome-hangman.png" />
     <Content Include="Scripts\hangman.js" />

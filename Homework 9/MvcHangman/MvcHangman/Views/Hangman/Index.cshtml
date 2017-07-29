@@ -1,65 +1,49 @@
 ﻿@using System.ServiceModel
-@model MvcHangman.Models.GameInfo
+@model  MvcHangman.Models.GameInfo
 
 @{
     ViewBag.Title = "Index";
-}
+ }
 
-@*<section class="hangman-image" >
+<section class="hangman-image" >
       <figure>
         <img src="Images/welcome-hangman.png" alt="hangman image">
       </figure>
-    </section>*@
-@*<section class="hangman-image" >
-      <figure>
-        <img src=@Url.Content(Model.StatusImage) alt="hangman image">
-      </figure>
-    </section>*@
-
+    </section>
 
 <h2>Guess world</h2>
+
 <h2>
      @foreach (var character in Model.hiddenWorld)
      {
          var variable = false;
          foreach (var letter in Model.letterUsed)
          {
-             if (letter == Char.ToUpper(character))
+             if (Char.ToLower(letter) == character)
              {
 
                  variable = true;
                  break;
              }
-            
+
          }
+         
          if (variable == true)
              
          {
              
          @Html.Raw(character.ToString())
 
-         }
+     }
          else
          {
            @Html.Raw("_ ")
 
-         }
+     }
         
         
-         }
+     }
     
-   @* <div>
-
-        @foreach (var alfa in Model.letterUsed)
-        {
-            if (Model.hiddenWorld.Contains(Char.ToLower(alfa)) == false)
-            {
-                Model.numberChoices = Model.numberChoices - 1;
-            }
-                
-        }
-       
-    </div>*@
     @Html.Hidden("numberOfChoices", Model.numberChoices, new {@id = "numberOfChoices"})
     <div>
         Number of choices left: 
@@ -73,48 +57,13 @@
         }
 
     </div>
-<div>
-    
-</div>
+
     <div>
         Letters: still available:
-        @Model.str
-
-
-    @* @foreach (var a in Model.lettersAvailable)
-     {
-       @Html.Raw((char)a + ", ");
-      // @Model.lettersAvailable = Model.lettersAvailable.TrimEnd(',');
-     
-      }*@
-       @* @for (char c = 'A'; c <= Model.lettersAvailable.Length; c++)
-        {
-           // if((char)a != null)
-            if(c < Model.lettersAvailable.Length)
-            {
-             Html.Raw(c + ", ");
-             c++;
-            }
-        }*@
+        @Model.str                              
        
-      @* @for (char c = 'A'; c <= 'Z'; c++)
-        {
-            var items = string.Join("",c, ",");
-            @Html.Raw(items.TrimEnd(','));
-        
-        }*@
-      @* 
-       @foreach (var item in Model.lettersAvailable)
-       {
-           string str1 = "";
-           str1 = str1 + item + ",";
-                                
-           @Html.Raw(str1)
-       }*@
+    </div>
 
-                               
-       
-     </div>
     @using (Html.BeginForm())
     { 
        <div>
@@ -124,17 +73,9 @@
            @Html.TextBoxFor(m => m.letterNext) <button type="submit">Try</button>
            @Html.ValidationMessageFor(m => m.letterNext)
 
+           @*@Html.DropDownListFor(m => m.str, null);*@
+
        </div>
     }
 
 </h2>
-
-<script>
-    var choicesLeft = $('#numberOfChoices').val();
-    var rootImage = "/Images/hangman-";
-    var imageIndex = 7 - choicesLeft;
-    var image = rootImage + imageIndex + ".png";
-    $("img").attr('src', image);
-
-    
-</script>
