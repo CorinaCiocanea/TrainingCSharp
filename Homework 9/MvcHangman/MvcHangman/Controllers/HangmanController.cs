@@ -16,31 +16,27 @@ namespace MvcHangman.Controllers
             worlds = new List<string>() { "scoala", "masina", "avion", "carte", "barca", "bicicleta" };
             numberOfChoices = 7;
         }
-      
+
 
         public ActionResult Index()
         {
 
-           
+
             Random random = new Random();
             int index = random.Next(worlds.Count - 1);
             GameInfo gameInfo = new GameInfo()
             {
                 hiddenWorld = worlds[index],
                 letterUsed = "",
-                lettersAvailable = new string(Enumerable.Range(65, 26)
-                    .Select(number => (char)number)
-                    //.Where(c => gameInfo.letterUsed.Contains(Char.ToLower(c)) == false && gameInfo.letterUsed.Contains(c) == false)
-                    .ToArray()),
+                lettersAvailable = Enumerable.Range(65, 26)
+                    .Select(number => (char)number).Select(c => new SelectListItem() { Text = c.ToString(), Value = Char.ToLower(c).ToString()})
+                    .ToList(),
                 letterNext = ' '
             };
             foreach (var item in gameInfo.lettersAvailable)
                 gameInfo.str = gameInfo.str + item + ",";
             gameInfo.str = gameInfo.str.Remove(gameInfo.str.Length - 1);
-
             gameInfo.numberChoices = numberOfChoices;
-            gameInfo.lettersAvailable = new string(gameInfo.lettersAvailable.Where(element => gameInfo.letterUsed.Contains(element) == false).ToArray());
-           // gameInfo.StatusImage = "~/Images/welcome-hangman.png";
             return View(gameInfo);
         }
 
@@ -84,10 +80,11 @@ namespace MvcHangman.Controllers
            
 
             gameInfo.letterNext = ' ';
-            gameInfo.lettersAvailable = new string(Enumerable.Range(65, 26)
+            gameInfo.lettersAvailable = Enumerable.Range(65, 26)
             .Select(number => (char)number)
             .Where(c => gameInfo.letterUsed.Contains(Char.ToLower(c)) == false && gameInfo.letterUsed.Contains(c) == false)
-            .ToArray());
+            .Select(c => new SelectListItem() {Text = c.ToString(), Value = Char.ToLower(c).ToString()})
+            .ToList();
          
             foreach (var item in gameInfo.lettersAvailable)
                 gameInfo.str = gameInfo.str + item + ",";

@@ -11,30 +11,30 @@ namespace Agend
         public void Test()
         {
             Console.WriteLine("Enter the number of tasks for Monday :");
-            int numarDeTaskuri = Convert.ToInt32(Console.ReadLine());
+            int numberOfTasks = Convert.ToInt32(Console.ReadLine());
 
-            string[] tasks = new string[numarDeTaskuri];
+            string[] tasks = new string[numberOfTasks];
 
-            for (int i = 0; i < numarDeTaskuri; i++)
+            for (int i = 0; i < numberOfTasks; i++)
             {
                 Console.Write("Type tasks for Monday: ");
                 tasks[i] = Console.ReadLine();
             }
 
-            string rezultat = this.Concatenare(tasks);
-            Console.WriteLine("Monday : {0}", rezultat);
+            string result = this.Concatenation(tasks);
+            Console.WriteLine("Monday : {0}", result);
         }
 
-        private string Concatenare(string[] inputCuvinte)
+        private string Concatenation(string[] inputWords)
         {
-            if (inputCuvinte == null || inputCuvinte.Length == 0)
+            if (inputWords == null || inputWords.Length == 0)
                 return null;
 
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (string cuvant in inputCuvinte)
+            foreach (string word in inputWords)
             {
-                stringBuilder.Append(cuvant + ",");
+                stringBuilder.Append(word + ",");
             }
             return stringBuilder.ToString();
         }

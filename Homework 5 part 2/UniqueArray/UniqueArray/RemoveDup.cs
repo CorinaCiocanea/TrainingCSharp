@@ -10,39 +10,40 @@ namespace UniqueArray
 
     {
         readonly int[] array = new int[10];
-        int i, n, k, j, ctr = 0;
+        int i, k, j, contor = 0;
+        int lengthArray;
 
          public void RemoveDuplicates()
          {
              Console.Write("Input the number of elements to be stored in the array :");
-             n = Convert.ToInt32(Console.ReadLine());
+             lengthArray = Convert.ToInt32(Console.ReadLine());
 
-             Console.Write("Input {0} elements in the array :\n", n);
-             for (i = 0; i < n; i++)
+             Console.Write("Input {0} elements in the array :\n", lengthArray);
+             for (i = 0; i < lengthArray; i++)
              {
                  Console.Write("element - {0} : ", i);
                  array[i] = Convert.ToInt32(Console.ReadLine());
              }
 
-             for (i = 0; i < n; i++)
+             for (i = 0; i < lengthArray; i++)
             {
-                ctr = 0;
+                contor = 0;
 
                 for (j = 0; j < i - 1; j++)
                 {
                     if (array[i] == array[j])
                     {
-                        ctr++;
+                        contor++;
                     }
                 }
-                for (k = i + 1; k < n; k++)
+                for (k = i + 1; k < lengthArray; k++)
                 {
                     if (array[i] == array[k])
                     {
-                        ctr++;
+                        contor++;
                     }
                 }
-                if (ctr == 0)
+                if (contor == 0)
                 {
                     Console.Write("{0} ", array[i]);
                 }

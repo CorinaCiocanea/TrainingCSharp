@@ -15,10 +15,7 @@ namespace Agend
             Agenda agenda = new Agenda();
             agenda.Read();
             agenda.Print();
-            //ad.inserare2();
-            //ad.afisare2();
-
-
+            
             Console.ReadLine();
         }
     }

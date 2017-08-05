@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextCaracter
 {
-    class TextInput
+   public class TextInput
     {
 
          string value = "";

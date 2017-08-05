@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace MvcHangman.Models
 {
@@ -12,7 +13,7 @@ namespace MvcHangman.Models
 
         public string letterUsed { get; set; }
 
-        public string lettersAvailable { get; set; }
+        public List<SelectListItem> lettersAvailable { get; set; }
 
         public string str { get; set; }
 

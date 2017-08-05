@@ -8,27 +8,22 @@ namespace List
 {
     class Program
     {
-       //const string s = "da";
-       // const string rasp;
 
         static void Main(string[] args)
         {
             List<int> items = new List<int>();
-            int n, i, j;
+            int i;
             string yesAnswer = "y";
             string noAnswer = "n";
-            string rasp;
-            //ring rasp2;
+            string answer;
             string userInput;
-
-
             bool repeat = true;
 
             while (repeat)
             {
                 Console.Write("Do you want to add more numbers (y/n)?");
-                rasp = Console.ReadLine();
-                if (rasp == yesAnswer)
+                answer = Console.ReadLine();
+                if (answer == yesAnswer)
                 {
 
                     Console.Write(string.Format("Please type an integer number"));
@@ -43,7 +38,7 @@ namespace List
                         Console.Write(string.Format("That was not a number"));
                     }
                 }
-                else if (rasp == noAnswer)
+                else if (answer == noAnswer)
                 {
                     repeat = false;
                 }

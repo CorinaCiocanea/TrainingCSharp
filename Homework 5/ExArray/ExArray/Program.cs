@@ -10,68 +10,65 @@ namespace ExArray
     {
         static void Main(string[] args)
         {
-            int[] arr = new int[10];
+            int[] array = new int[10];
             int i, j;
-            string yesAnswr = "y";
+            string yesAnswer = "y";
             string noAnswer = "n";
-            string rasp;
+            string answer;
             string userInput;
             bool repeat = true;
-          //  for (i = 0; i < arr.Length; i++)
+
             while (repeat)
             {
                 Console.Write("Do you want to add more numbers (y/n)?");
-                rasp = Console.ReadLine();
-                if(rasp == yesAnswr)
+                answer = Console.ReadLine();
+                if (answer == yesAnswer)
                 {
                     Console.Write(string.Format("Please type an integer number"));
                     userInput = Console.ReadLine();
-              
+
                     int newItem;
-                   
+
                     if (int.TryParse(userInput, out newItem))
                     {
-
-                        //for (i = 0; i < arr.Length; i++)
-                            arr = arr.Concat(new int[] { newItem, 1 }).ToArray();
-                       
+                        array = array.Concat(new int[] { newItem, 1 }).ToArray();
                     }
                     else
                     {
                         Console.Write(string.Format("That was not a number"));
                     }
-                    
+
                 }
-                else 
-                if(rasp == noAnswer)
-                {
-                    repeat = false;
-                }
+                else
+                    if (answer == noAnswer)
+                    {
+                        repeat = false;
+                    }
             }
-            for (i = 0; i < arr.Length; i++)
+            for (i = 0; i < array.Length; i++)
             {
-                Console.WriteLine("Value in index {0}:\t{1}", i, arr[i]);
+                Console.WriteLine("Value in index {0}:\t{1}", i, array[i]);
             }
 
 
             Console.WriteLine("prime:");
-            for (i = 0; i < arr.Length; i++)
+            for (i = 0; i < array.Length; i++)
             {
-                for (j = 2; j < arr[i]; j++)
-                    if ((arr[i] % j == 0))
+                for (j = 2; j < array[i]; j++)
+                    if ((array[i] % j == 0))
                     {
-                        Console.WriteLine("{0}: not prime", arr[i]);
+                        Console.WriteLine("{0}: not prime", array[i]);
                         break;
                     }
-                if (j == arr[i])
+                if (j == array[i])
                 {
-                    Console.WriteLine("{0} : Is a prime", arr[i]);
+                    Console.WriteLine("{0} : Is a prime", array[i]);
                 }
             }
-            //Console.Write("\n"); 
-               
-                Console.ReadLine();
+
+
+            Console.ReadLine();
         }
-       
+
     }
 }

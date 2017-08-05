@@ -8,55 +8,55 @@ namespace FileAgend
 {
   public class Task
     {
-       protected string Day;
-        string Name;
-        string Priority;
-        int Hour;
+        private string day;
+        private string name;
+        private string priority;
+        private int hour;
 
-        public string dDay
+        public string Day
         {
             get
             {
-                return Day;
+                return day;
             }
             set
             {
-                Day = value;
+                day = value;
             }
         }
 
-        public string nName
+        public string Name
         {
             get
             {
-                return Name;
+                return name;
             }
             set
             {
-                Name = value;
+                name = value;
             }
         }
 
-        public string pPriority
+        public string Priority
         {
             get
             {
-                return Priority;
+                return priority;
             }
             set
             {
-                Priority = value;
+                priority = value;
             }
         }
-        public int hHour
+        public int Hour
         {
             get
             {
-                return Hour;
+                return hour;
             }
             set
             {
-                Hour = value;
+                hour = value;
             }
         }
     }

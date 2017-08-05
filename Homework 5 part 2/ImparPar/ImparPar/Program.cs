@@ -13,19 +13,19 @@ namespace ImparPar
             int[] array = new int[20];
             int[] array2 = new int[20];
             int[] array3 = new int[20];
-            int n, i, j=0, k=0;
+            int numberItems, i, j = 0, k = 0;
 
-             Console.Write("Number of items :");
-	          n = Convert.ToInt32(Console.ReadLine()); 	   
-   
-            Console.WriteLine("Input {0} elements in the array: ",n);
-            for (i = 0; i < n; i++)
+            Console.Write("Number of items :");
+            numberItems = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Input {0} elements in the array: ", numberItems);
+            for (i = 0; i < numberItems; i++)
             {
                 Console.WriteLine("element - {0} : ", i);
                 array[i] = Convert.ToInt32(Console.ReadLine());
             }
 
-            for (i = 0; i < n; i++)
+            for (i = 0; i < numberItems; i++)
             {
                 if (array[i] % 2 == 0)
                 {

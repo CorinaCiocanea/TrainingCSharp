@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FibonnaciIE
 {
-    class Program
+   public class Fibonnaci
     {
         private static List<int> fibs = new List<int>() { 1, 1 };
         static IEnumerable<int> F()
@@ -27,6 +27,9 @@ namespace FibonnaciIE
   
         static void Main(string[] args)
         {
+           
+            //Fibonnaci p = new Fibonnaci();
+            
             //var generator = new Fibo(10);
 
             //foreach (var num in generator)
@@ -34,6 +37,7 @@ namespace FibonnaciIE
             //    Console.WriteLine(num);
             //    Console.ReadLine();
             //}
+            
         }
     }
 }

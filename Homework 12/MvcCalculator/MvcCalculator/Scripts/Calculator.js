@@ -1,84 +1,20 @@
-﻿var result = $('#result');
-button = $(':button');
-calcHistory = $('#calcHistory');
+﻿"use strict";
+var result = $('#result');
+var button = $(':button');
+var calcHistory = $('#calcHistory');
 var curent = '0';
 var number = "";
 var newnumber = "";
 var operator = "";
 
-(button).click(function () {
-    var buttonVal = $(this).val(),
-        value = result.val();
-            //if (buttonVal == '+') {
-            //   // operator = "+";
-            //    if (curent != 0 && operator != "") {
-            //        curent = compute();
+$("[data-type='number']").click(function () {
+    var buttonVal = $(this).val();
+    var value = result.val();
+    value += buttonVal;
+    result.val(value);
 
-            //    } else {
-            //        curent = parseFloat(value, 10);
-            //    }
-
-            //    operator = "+";
-            //    value += buttonVal
-            //    calcHistory.val(calcHistory.val() + value);
-            //    result.val('');
-
-            //} else
-                if (buttonVal == '-') {
-                   // operator = "-";
-                    if (curent != 0 && operator != "") {
-                        curent = compute();
-
-                    } else {
-                        curent = parseFloat(value, 10);
-                    }
-
-                    operator = "-";
-                    value += buttonVal
-                    calcHistory.val(calcHistory.val() + value);
-                    result.val('');
-
-                } else
-                    if (buttonVal == 'X') {
-                       
-                        if (curent != 0 && operator != "") {
-                            curent = compute();
-                            
-                        } else {
-                            curent = parseFloat(value, 10);
-                        }
-
-                        operator = "X";
-                        value += buttonVal
-                        calcHistory.val(calcHistory.val() + value);
-                        result.val('');
-
-                    } else
-                        if (buttonVal == '/') {
-                           
-                            if (curent != 0 && operator != "") {
-                                curent = compute();
-                                
-                            } else {
-                                curent = parseFloat(value, 10);
-                            }
-
-                            operator = "/";
-                            value += buttonVal
-                            calcHistory.val(calcHistory.val() + value);
-                            result.val('');
-
-                        } else {
-                            if (buttonVal != "=" && buttonVal != "back") {
-                                value += buttonVal;
-                                result.val(value);
-                            }
-
-                        }
 });
-
-
-
+ 
 $('#clear').click(function () {
     result.val('');
 });
@@ -92,19 +28,72 @@ $('#clearH').click(function () {
 });
 
 $('#add').click(function () {
-            if (curent != 0 && operator != "") {
-                curent = compute();
+    var value = result.val();
+    var buttonVal = $(this).val();
+    if (curent != 0 && operator != "") {
+        curent = compute();
 
-            } else {
-                curent = parseFloat(value, 10);
-            }
+    } else {
+        curent = parseFloat(value, 10);
+    }
 
-            operator = "+";
-            value += buttonVal
-            calcHistory.val(calcHistory.val() + value);
-            result.val('');
+    operator = "+";
+    value += buttonVal
+    calcHistory.val(calcHistory.val() + value);
+    result.val('');
 
-        
+
+});
+
+$('#min').click(function () {
+    var value = result.val();
+    var buttonVal = $(this).val();
+    if (curent != 0 && operator != "") {
+        curent = compute();
+
+    } else {
+        curent = parseFloat(value, 10);
+    }
+
+    operator = "-";
+    value += buttonVal
+    calcHistory.val(calcHistory.val() + value);
+    result.val('');
+
+});
+
+$('#multipl').click(function () {
+    var value = result.val();
+    var buttonVal = $(this).val();
+    if (curent != 0 && operator != "") {
+        curent = compute();
+
+    } else {
+        curent = parseFloat(value, 10);
+    }
+
+    operator = "X";
+    value += buttonVal
+    calcHistory.val(calcHistory.val() + value);
+    result.val('');
+
+});
+
+$('#divis').click(function () {
+    var value = result.val();
+    var buttonVal = $(this).val();
+    if (curent != 0 && operator != "") {
+        curent = compute();
+
+    } else {
+        curent = parseFloat(value, 10);
+    }
+
+    operator = "/";
+    value += buttonVal
+    calcHistory.val(calcHistory.val() + value);
+    result.val('');
+
 });
 
 
@@ -119,6 +108,7 @@ $('#back').click(function () {
     result.val(newValue);
 
 });
+
 $("#neg").click(function () {
     var bigNum = parseInt(result.val());
     var negative = bigNum * -1;
@@ -130,6 +120,7 @@ $('#equal').click(function () {
     calcHistory.val(calcHistory.val() + value);
     curent = compute();
     operator = "";
+    calcHistory.val('');
 });
 
 function compute() {

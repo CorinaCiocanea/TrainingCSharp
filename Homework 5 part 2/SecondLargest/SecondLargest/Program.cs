@@ -12,23 +12,23 @@ namespace SecondLargest
         {
 
             int[] array = new int[100];
-             int n, i, j, temp;
+            int numberItems, i, j, temp;
 
-             Console.Write("Number of items :");
-	          n = Convert.ToInt32(Console.ReadLine()); 	   
-   
-            Console.WriteLine("Input {0} elements in the array: ",n);
+            Console.Write("Number of items :");
+            numberItems = Convert.ToInt32(Console.ReadLine());
 
-            for (i = 0; i < n; i++)
+            Console.WriteLine("Input {0} elements in the array: ", numberItems);
+
+            for (i = 0; i < numberItems; i++)
             {
 
                 Console.Write("element - {0} : ", i);
                 array[i] = Convert.ToInt32(Console.ReadLine());
             }
 
-            for (i = 0; i < n; i++)
+            for (i = 0; i < numberItems; i++)
             {
-                for (j = i + 1; j < n; j++)
+                for (j = i + 1; j < numberItems; j++)
                 {
                     if (array[i] < array[j])
                     {
@@ -39,8 +39,8 @@ namespace SecondLargest
                 }
             }
 
-                 Console.WriteLine("The second largest element in an array {0}", array[1]);
-                 Console.ReadLine();
+            Console.WriteLine("The second largest element in an array {0}", array[1]);
+            Console.ReadLine();
         }
     }
 }

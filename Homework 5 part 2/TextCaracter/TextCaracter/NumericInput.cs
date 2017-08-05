@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextCaracter
 {
-    class NumericInput : TextInput
+   public class NumericInput : TextInput
     {
         public override void Add(char c)
         {

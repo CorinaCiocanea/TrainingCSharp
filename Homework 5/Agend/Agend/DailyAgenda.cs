@@ -21,32 +21,30 @@ namespace Agend
         public void Read()
         {
             Console.WriteLine("Enter the number of tasks for {0} :", day);
-            int numarDeTaskuri = Convert.ToInt32(Console.ReadLine());
+            int numberOfTasks = Convert.ToInt32(Console.ReadLine());
 
-           string s ;
+           string answer ;
             do 
             {
                  Console.Write("Type tasks for {0}: ", day);
-                   s = Console.ReadLine();
-                     if (s != "done")
+                   answer = Console.ReadLine();
+                     if (answer != "done")
                      {
 
-                         tasks.Add(s);
+                         tasks.Add(answer);
                      }
 
-               
-
-            } while (s != "done");
+            } while (answer != "done");
             
 
 
         }
         public void Print()
         {
-            Console.WriteLine("afisam ziua: {0}", day);
+            Console.WriteLine("Display day: {0}", day);
             foreach (string task in tasks)
             {
-                Console.WriteLine("afisam task: {0}", task);
+                Console.WriteLine("Display task: {0}", task);
             }
         }
 
