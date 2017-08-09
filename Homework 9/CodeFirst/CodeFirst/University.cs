@@ -8,6 +8,7 @@ namespace CodeFirst
 {
   public class University
     {
+      public virtual List<Student> Students { get; set; }
 
     }
 }
