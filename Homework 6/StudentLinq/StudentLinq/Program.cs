@@ -147,7 +147,7 @@ namespace StudentLinq
 
             foreach (var item in query5)
             {
-                Console.WriteLine("Student name: {0}. Hobbies {1}", count);
+               // Console.WriteLine("Student name: {0}. Hobbies {1}", count);
             }
 
 
@@ -157,7 +157,7 @@ namespace StudentLinq
                 select student;
             foreach (var item in query4)
             {
-                Console.WriteLine("Student name: {0}. Hobbies {1}", item.Course);
+                //Console.WriteLine("Student name: {0}. Hobbies {1}", item.Course);
             }
 
            

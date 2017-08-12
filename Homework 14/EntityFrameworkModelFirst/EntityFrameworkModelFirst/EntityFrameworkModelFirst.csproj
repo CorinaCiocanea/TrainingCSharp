@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{771BD756-4EEE-4DEE-B63C-566B79CB0EBE}</ProjectGuid>
+    <ProjectGuid>{513559CC-3E0A-4CD5-B8EA-C5E32C3FA6BF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeFirst</RootNamespace>
-    <AssemblyName>CodeFirst</AssemblyName>
+    <RootNamespace>EntityFrameworkModelFirst</RootNamespace>
+    <AssemblyName>EntityFrameworkModelFirst</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,26 +50,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFramew.cs" />
-    <Compile Include="Migrations\201708091714504_AddedYearOfStudy.cs" />
-    <Compile Include="Migrations\201708091714504_AddedYearOfStudy.Designer.cs">
-      <DependentUpon>201708091714504_AddedYearOfStudy.cs</DependentUpon>
+    <Compile Include="Blog.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="BloggingModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BloggingModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BloggingModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BloggingModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BloggingModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Post.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleData.cs" />
-    <Compile Include="Student.cs" />
-    <Compile Include="University.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>BloggingModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="BloggingModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BloggingModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BloggingModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BloggingModel.Context.cs</LastGenOutput>
+      <DependentUpon>BloggingModel.edmx</DependentUpon>
+    </None>
+    <None Include="BloggingModel.edmx.diagram">
+      <DependentUpon>BloggingModel.edmx</DependentUpon>
+    </None>
+    <None Include="BloggingModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BloggingModel.cs</LastGenOutput>
+      <DependentUpon>BloggingModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708091714504_AddedYearOfStudy.resx">
-      <DependentUpon>201708091714504_AddedYearOfStudy.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="BloggingModel.edmx.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

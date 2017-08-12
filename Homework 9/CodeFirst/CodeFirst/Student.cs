@@ -18,11 +18,13 @@ namespace CodeFirst
         }
     public class Student
     {
+        public int Id { get; set; }
             public string LastName { get; set; }
             public string FirstName { get; set; }
             public DateTime BirthDate { get; set; }
             public long CNP { get; set; }
             public Specializations Specialization { get; set; }
+            public int YearOfStudy { get; set; }
 
         
     }
