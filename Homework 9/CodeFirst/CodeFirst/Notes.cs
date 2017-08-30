@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace CodeFirst
 {
-   public class Notes
+    public enum Materials 
     {
-        public int NoteId { get; set; }
-        public int Note { get; set; }
-        public virtual Student Student { get; set; }
+      Database,
+        POO,
+        Computer_networks
+
+
+    }
+   public class Note
+    {
+        public int Id { get; set; }
+        public int Grade { get; set; }
+        public Materials Material { get; set; }
+      //  public virtual Student Student { get; set; }
     }
 }

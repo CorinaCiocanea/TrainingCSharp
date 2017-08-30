@@ -53,6 +53,10 @@
     <Compile Include="Migrations\201708091714504_AddedYearOfStudy.Designer.cs">
       <DependentUpon>201708091714504_AddedYearOfStudy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708161631026_AddedTableNotes.cs" />
+    <Compile Include="Migrations\201708161631026_AddedTableNotes.Designer.cs">
+      <DependentUpon>201708161631026_AddedTableNotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Notes.cs" />
     <Compile Include="Program.cs" />
@@ -68,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708091714504_AddedYearOfStudy.resx">
       <DependentUpon>201708091714504_AddedYearOfStudy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708161631026_AddedTableNotes.resx">
+      <DependentUpon>201708161631026_AddedTableNotes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Universty.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Notes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Notes">
+          <Property Name="Note" Type="int" />
+          <Property Name="Materials" Type="nvarchar" MaxLength="100" />
+          <Property Name="Id" Type="int" />
+        </EntityType>-->
         <EntityType Name="Students">
           <Key>
             <PropertyRef Name="Id" />
@@ -26,6 +33,7 @@
       <Schema Namespace="Universty" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UniverstyDatabaseConnection" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="Students" EntityType="Universty.Student" />
+          <EntitySet Name="Notes" EntityType="Universty.Note" />
         </EntityContainer>
         <EntityType Name="Student">
           <Key>
@@ -38,6 +46,16 @@
           <Property Name="Specializations" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="YearOfStudy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Note">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="NoteId" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Note1" Type="Int32" />
+          <Property Name="Materials" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NoteId" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

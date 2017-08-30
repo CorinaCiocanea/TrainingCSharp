@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MvcRestaurant.Models.Table>
+
+@{
+    ViewBag.Title = "ViewTables";
+}
+
+<h2>ViewTables</h2>
+<table>
+    <tr>
+    <th>
+       Dimension Table
+     </th>
+    <th>
+     Status
+    </th>
+    
+  </tr>
+@foreach (var item in Model)
+{
+   <tr>
+       <td>
+           @item.DimensionTable
+       </td>
+       <td>
+           @Html.DisplayFor(modelItem => item.Status)
+       </td>
+   </tr>
+}
+</table>

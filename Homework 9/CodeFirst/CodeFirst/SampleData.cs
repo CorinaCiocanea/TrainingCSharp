@@ -10,7 +10,7 @@ namespace CodeFirst
    public class SampleData : DbContext
     {
         public DbSet<Student> Studentss { get; set; }
-        public DbSet<Notes> Notess { get; set; }
+        public DbSet<Note> Notess { get; set; }
       
     }
 }

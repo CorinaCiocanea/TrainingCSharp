@@ -1,0 +1,48 @@
+﻿@model MvcRestaurant.Models.BookingForm
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Reservation Form</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumberOfPeople)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumberOfPeople)
+            @Html.ValidationMessageFor(model => model.NumberOfPeople)
+        </div>
+ 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReservationDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReservationDate)
+            @Html.ValidationMessageFor(model => model.ReservationDate)
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.TimeOfBooking)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TimeOfBooking)
+            @Html.ValidationMessageFor(model => model.TimeOfBooking)
+        </div>
+   
+           <p>
+            <input type="submit" value="Complete" />
+        </p>
+        <p> @Html.ActionLink("ViewTables", "ViewTables")
+</p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

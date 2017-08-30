@@ -25,8 +25,9 @@ namespace CodeFirst
         public long CNP { get; set; }
         public Specializations Specialization { get; set; }
         public int YearOfStudy { get; set; }
+        public int? Id { get; set; }
 
-        public virtual List<Notes> Notess { get; set; }
+        public virtual List<Note> Notess { get; set; }
 
 
     }

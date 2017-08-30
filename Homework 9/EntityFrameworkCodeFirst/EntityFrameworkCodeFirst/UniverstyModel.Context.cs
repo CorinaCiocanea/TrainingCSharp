@@ -26,5 +26,6 @@ namespace EntityFrameworkCodeFirst
         }
     
         public DbSet<Student> Students { get; set; }
+        public DbSet<Note> Notes { get; set; }
     }
 }
