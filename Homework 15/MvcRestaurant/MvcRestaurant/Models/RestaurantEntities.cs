@@ -12,9 +12,13 @@ namespace MvcRestaurant.Models
         public DbSet<Waiter> Waiters { get; set; }
         public DbSet<BookingForm> BookingForms { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ComplexType<Coords>();
+
+            modelBuilder.Entity<Table>().Property(x => x.CoordinatesTable.CoordinateX).HasColumnName("XCoordinate");
+            modelBuilder.Entity<Table>().Property(x => x.CoordinatesTable.CoordinateY).HasColumnName("YCoordinate");
+        }
     }
 }

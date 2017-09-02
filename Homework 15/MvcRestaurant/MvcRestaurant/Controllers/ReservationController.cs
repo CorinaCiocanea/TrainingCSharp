@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MvcRestaurant.Models;
 using System.Data.Entity;
-using System.Web;
+
 
 namespace MvcRestaurant.Controllers
 {
@@ -18,8 +18,20 @@ namespace MvcRestaurant.Controllers
 
         public ActionResult Index()
         {
+          
             return View();
 
+        }
+        [HttpPost]
+        public ActionResult Index(BookingForm form)
+        {
+             if (ModelState.IsValid) 
+            {
+                db.BookingForms.Add(form);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(form);
         }
         public ActionResult ViewTables()
         {

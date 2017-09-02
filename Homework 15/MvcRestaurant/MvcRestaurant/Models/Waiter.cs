@@ -10,7 +10,8 @@ namespace MvcRestaurant.Models
         public int WaiterId { get; set; }
         public string Name { get; set; }
         public int NumberEmployee { get; set; }
-        public string Coordinator { get; set; }
+        public int CoordinatorId { get; set; }
+        public Waiter Coordinator { get; set; }
         public List<Table> Tables { get; set; }
     }
 }
