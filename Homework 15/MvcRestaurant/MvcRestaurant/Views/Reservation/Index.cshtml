@@ -24,7 +24,7 @@
             @Html.LabelFor(model => model.ReservationDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ReservationDate, new {id = "ReservationDate", @class="datetime", type = "datetime"})
+            @Html.TextBoxFor(model => model.ReservationDate, new {id = "ReservationDate", @class="datetime", type = "datetime"})
             @Html.ValidationMessageFor(model => model.ReservationDate)
         </div>
 
@@ -41,6 +41,8 @@
         </p>
         <p> @Html.ActionLink("ViewTables", "ViewTables")
 </p>
+         <p> @Html.ActionLink("ViewDiagram", "ViewDiagram")
+</p>
     </fieldset>
 }
 
@@ -49,8 +51,9 @@
 </div>
 
 <script type="text/javascript">
+
+    };
     $(document).ready(function () {
-        console.log("The id is :" + $('.datetime').attr("id"));
         $('.datetime').datepicker({
             dateFormat: "dd/M/yy",
             changeMonth: true,

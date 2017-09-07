@@ -12,10 +12,28 @@ namespace AirlineCompany.Controllers
         private Form fr = new Form();
         //
         // GET: /Form/
-
+        private AirlineEntities db = new AirlineEntities();
         public ActionResult Index()
         {
             
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(Form form)
+        {
+           
+                db.Forms.Add(form);
+                db.SaveChanges();
+                form.Message = "Successful completion";
+                return RedirectToAction("Index");
+            
+            
+            return View();
+        
+        }
+
+        public ActionResult ViewSeat()
+        {
             return View();
         }
 

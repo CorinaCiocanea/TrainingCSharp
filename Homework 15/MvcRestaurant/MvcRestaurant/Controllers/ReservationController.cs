@@ -25,10 +25,17 @@ namespace MvcRestaurant.Controllers
         [HttpPost]
         public ActionResult Index(BookingForm form)
         {
-             if (ModelState.IsValid) 
+            bool tableExist = db.Tables.Any(table => table.Status.Equals(Status.Occupied));
+            
+            if (tableExist)
+            {
+                form.Message = "I'm sorry there is no free meal";
+            }
+            else
             {
                 db.BookingForms.Add(form);
                 db.SaveChanges();
+                form.Message = "Successful completion";
                 return RedirectToAction("Index");
             }
             return View(form);
@@ -39,6 +46,10 @@ namespace MvcRestaurant.Controllers
             //BookingForm form = db.BookingForms.Include(l => l.Tables).Single(l => l.BookingFormId == bookingId);
             //ViewBag.BookingFormId = new SelectList(db.BookingForms, "BookingFormId");
             return View(listForm);
+        }
+        public ActionResult ViewDiagram()
+        {
+            return View();
         }
     }
 }

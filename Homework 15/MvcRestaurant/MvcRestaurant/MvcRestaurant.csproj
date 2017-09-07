@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DiagramController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -111,6 +112,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MvcRestaurant.sdf" />
+    <Content Include="Content\images\imag.png" />
+    <Content Include="Content\images\imagine1.png" />
+    <Content Include="Content\images\imagine2.png" />
+    <Content Include="Content\images\imagine3.png" />
+    <Content Include="Content\images\reserved.png" />
+    <Content Include="Content\images\table1.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -200,6 +207,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Reservation\ViewTables.cshtml" />
+    <Content Include="Views\Diagram\Index.cshtml" />
+    <Content Include="Views\Reservation\ViewDiagram.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

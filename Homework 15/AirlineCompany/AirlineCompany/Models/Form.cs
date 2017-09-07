@@ -9,5 +9,6 @@ namespace AirlineCompany.Models
     {
         public DateTime DateForm { get; set; }
         public string Location { get; set; }
+        public string Message { get; set; }
     }
 }
