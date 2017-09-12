@@ -25,7 +25,7 @@ namespace MvcRestaurant.Controllers
         [HttpPost]
         public ActionResult Index(BookingForm form)
         {
-            bool tableExist = db.Tables.Any(table => table.Status.Equals(Status.Occupied));
+            bool tableExist = db.Tables.Any(table => table.Status.Equals(Status.Free) && table.Tables.Exists(a => a.ReservationDate == form.ReservationDate));
             
             if (tableExist)
             {

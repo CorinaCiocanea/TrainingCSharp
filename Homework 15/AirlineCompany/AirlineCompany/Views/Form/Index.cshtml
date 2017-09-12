@@ -15,7 +15,7 @@
             @Html.LabelFor(model => model.DateForm)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DateForm )
+          @Html.TextBoxFor(model => model.DateForm, new {id = "ReservationDate", @class="datetime", type = "datetime"})
             @Html.ValidationMessageFor(model => model.DateForm)
         </div>
  
@@ -34,6 +34,20 @@
 </p>
     </fieldset>
 }
+
+<script type="text/javascript">
+
+    
+    $(document).ready(function () {
+        $('.datetime').datepicker({
+            dateFormat: "dd/M/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-60:+0"
+        });
+
+    });
+</script> 
  
  
      

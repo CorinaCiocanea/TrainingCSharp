@@ -9,12 +9,114 @@
     </div>
     <div style="float:left;"> 
     <ul id="seatDescription">
-        <li style="background:url('images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
-        <li style="background:url('images/imagine2.png') no-repeat scroll 0 0 transparent;">Reserved Table</li>
-        <li style="background:url('images/imagine3.png') no-repeat scroll 0 0 transparent;">Occupied Table</li>
+        <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
+        <li style="background:url('/Content/images/imagine2.png') no-repeat scroll 0 0 transparent;">Reserved Table</li>
+        <li style="background:url('/Content/images/imagine3.png') no-repeat scroll 0 0 transparent;">Occupied Table</li>
     </ul>
     </div>
         <div style="clear:both;width:100%">
         <input type="button" id="btnShowNew" value="Show Selected Table" />
         <input type="button" id="btnShow" value="Show All" />           
         </div>
+
+<div id="result">
+
+    <table>
+
+      <tbody>
+
+        <tr>
+
+      <td><img src="/Content/images/imagine1.png" /></td>
+
+      <td><p>nr4</p></td>
+
+    </tr>
+
+     <tr>
+
+      <td><a href="/Content/images/imagine1.png" " /></td>
+
+      <td><p>nr2 <img src="/Content/images/imagine1.png" /></p></td>
+
+    </tr>
+
+     <tr>
+
+      <td><p>nr8</p></td>
+
+      <td><p><img src="/Content/images/imagine1.png" /></p></td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+</div>
+   <div>
+<body>
+
+<ol id="selectable">
+   <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
+     <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
+     <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
+     
+</ol>
+ 
+</body>
+        </div>
+
+
+
+<script>
+    $(function () {
+        $("#result").selectable();
+    });
+  </script>
+
+<script>
+    $(document).ready(function () {
+        $('.acc_trigger').each(function (i) {
+            var icon = new Array;
+            icon[0] = '/Content/images/imagine1.png';
+            icon[1] = '/Content/images/imagine1.png';
+            icon[2] = '/Content/images/imagine1.png';
+            icon[3] = '/Content/images/imagine1.png';
+            icon[4] = '/Content/images/imagine1.png';
+            icon[5] = '/Content/images/imagine1.png';
+
+            $(this).prepend('<img src=' + icon[i] + ' />');
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+
+    var nodes = [];
+
+    rowsdraw(4, 1, 700, 80, "A");
+    rowsdraw(7, 2, 690, 120, "B");
+    rowsdraw(10, 3, 680, 160, "C");
+    rowsdraw(13, 4, 670, 200, "D");
+    rowsdraw(15, 5, 660, 240, "E");
+    rowsdraw(15, 6, 650, 280, "F");
+    rowsdraw(14, 7, 640, 320, "G");
+    rowsdraw(14, 8, 630, 360, "H");
+    rowsdraw(13, 9, 620, 400, "I");
+    rowsdraw(13, 10, 610, 440, "J");
+    rowsdraw(12, 11, 600, 480, "K");
+    rowsdraw(11, 12, 610, 520, "L");
+    rowsdraw(8, 13, 600, 560, "M");
+    rowsdraw(3, 14, 590, 600, "N");
+
+    function rowsdraw(count, row, offsetX, offsetY, label) {
+        createTextNode("seat" + label, offsetX + 40, offsetY, label);
+        for (i = 1; i < count; i++) {
+            createNode("seat" + row + i, offsetX, offsetY, i);
+            offsetX = offsetX - 40;
+        }
+        createTextNode("seat" + label + ej.datavisualization.Diagram.Util.randomId(), offsetX, offsetY, label);
+    }
+</script>

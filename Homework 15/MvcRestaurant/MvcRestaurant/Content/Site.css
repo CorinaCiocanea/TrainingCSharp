@@ -357,18 +357,18 @@ font-size:0.6em;
 background-color:yellow;      
 } 
 #place .seat{
-background:url("images/imagine1.png") no-repeat scroll 0 0 transparent;
+background:url("/Content/images/imagine1.png") no-repeat scroll 0 0 transparent;
 height:33px;
 width:33px;
 display:block;   
 }
 #place .selectedSeat
 { 
-background-image:url("images/imagine1.png");          
+background-image:url("/Content/images/imagine2.png");          
 }
 #place .selectingSeat
 { 
-background-image:url("images/imagine1.png");        
+background-image:url("/Content/images/imagine3.png");        
 }
 #place .row-3, #place .row-4{
 margin-top:10px;
@@ -380,3 +380,11 @@ padding-left:35px;
 height:35px;
 float:left;
 }
+
+
+
+
+#result .ui-selecting { background: #FECA40; }
+  #result .ui-selected { background: #F39814; color: white; }
+  #result { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #result li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }

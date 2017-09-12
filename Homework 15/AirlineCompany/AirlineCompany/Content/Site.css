@@ -373,3 +373,9 @@ padding-left:35px;
 height:35px;
 float:left;
 }
+
+.datetime {
+
+border: 1px solid #8A8575;
+width: 300px;
+}
