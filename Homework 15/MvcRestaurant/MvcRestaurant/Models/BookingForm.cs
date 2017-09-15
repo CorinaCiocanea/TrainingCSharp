@@ -12,6 +12,6 @@ namespace MvcRestaurant.Models
         public DateTime ReservationDate { get; set; }
         public DateTime TimeOfBooking { get; set; }
         public string Message { get; set; }
-        //public virtual List<Table> Tables { get; set; }
+        public virtual List<Table> Tables { get; set; }
     }
 }

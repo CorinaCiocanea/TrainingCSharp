@@ -5,11 +5,43 @@
 <h2>ViewDiagram</h2>
 <div id="holder"> 
         <ul  id="place">
+<table class="tablesDiagram">
+      <tbody>
+
+        <tr>
+
+      <td><p class = "tableSize">2</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+      <td><p class = "tableSize">8</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+      <td><p class = "tableSize">2</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+
+    </tr>
+
+     <tr>
+
+      <td><p class = "tableSize">4</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+      <td><p class = "tableSize">2</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+      <td><p class = "tableSize">8</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+
+
+    </tr>
+
+     <tr>
+
+      <td><p class = "tableSize">6</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+      <td><p class = "tableSize">2</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+      <td><p class = "tableSize">4</p><img class="tableStyle" src="/Content/images/imagine1.png" id="picture" /></td>
+
+
+    </tr>
+
+  </tbody>
+
+</table>
         </ul>    
     </div>
     <div style="float:left;"> 
     <ul id="seatDescription">
-        <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
+        <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;" id="Imag">Available Table</li>
         <li style="background:url('/Content/images/imagine2.png') no-repeat scroll 0 0 transparent;">Reserved Table</li>
         <li style="background:url('/Content/images/imagine3.png') no-repeat scroll 0 0 transparent;">Occupied Table</li>
     </ul>
@@ -19,56 +51,28 @@
         <input type="button" id="btnShow" value="Show All" />           
         </div>
 
-<div id="result">
 
-    <table>
+<script>
+    //$('.tableStyle').click(function () {
+    //    $(this).attr("src", "/Content/images/imagine2.png")
+    //})
 
-      <tbody>
+    $(".tableStyle").live('click', function () {
 
-        <tr>
+        if ($(this).attr("src").toString().indexOf('imagine1.png') != -1) {
 
-      <td><img src="/Content/images/imagine1.png" /></td>
+            this.src = this.src.replace("imagine1.png", "imagine2.png");
 
-      <td><p>nr4</p></td>
+        }
 
-    </tr>
+        else {
 
-     <tr>
+            this.src = this.src.replace("imagine2.png", "imagine1.png");
 
-      <td><a href="/Content/images/imagine1.png" " /></td>
+        }
 
-      <td><p>nr2 <img src="/Content/images/imagine1.png" /></p></td>
-
-    </tr>
-
-     <tr>
-
-      <td><p>nr8</p></td>
-
-      <td><p><img src="/Content/images/imagine1.png" /></p></td>
-
-    </tr>
-
-  </tbody>
-
-</table>
-
-</div>
-   <div>
-<body>
-
-<ol id="selectable">
-   <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
-     <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
-     <li style="background:url('/Content/images/imagine1.png') no-repeat scroll 0 0 transparent;">Available Table</li>
-     
-</ol>
- 
-</body>
-        </div>
-
-
-
+    });
+</script>
 <script>
     $(function () {
         $("#result").selectable();
@@ -92,31 +96,9 @@
 </script>
 
 
-<script type="text/javascript">
+<script>
+    $('#Imag').click(function () {
+        $('#picture').attr('src', '/Content/images/imagine2.png');
+    });
 
-    var nodes = [];
-
-    rowsdraw(4, 1, 700, 80, "A");
-    rowsdraw(7, 2, 690, 120, "B");
-    rowsdraw(10, 3, 680, 160, "C");
-    rowsdraw(13, 4, 670, 200, "D");
-    rowsdraw(15, 5, 660, 240, "E");
-    rowsdraw(15, 6, 650, 280, "F");
-    rowsdraw(14, 7, 640, 320, "G");
-    rowsdraw(14, 8, 630, 360, "H");
-    rowsdraw(13, 9, 620, 400, "I");
-    rowsdraw(13, 10, 610, 440, "J");
-    rowsdraw(12, 11, 600, 480, "K");
-    rowsdraw(11, 12, 610, 520, "L");
-    rowsdraw(8, 13, 600, 560, "M");
-    rowsdraw(3, 14, 590, 600, "N");
-
-    function rowsdraw(count, row, offsetX, offsetY, label) {
-        createTextNode("seat" + label, offsetX + 40, offsetY, label);
-        for (i = 1; i < count; i++) {
-            createNode("seat" + row + i, offsetX, offsetY, i);
-            offsetX = offsetX - 40;
-        }
-        createTextNode("seat" + label + ej.datavisualization.Diagram.Util.randomId(), offsetX, offsetY, label);
-    }
 </script>

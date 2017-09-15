@@ -36,7 +36,7 @@ namespace MvcRestaurant.Controllers
                 db.BookingForms.Add(form);
                 db.SaveChanges();
                 form.Message = "Successful completion";
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewDiagram");
             }
             return View(form);
         }
