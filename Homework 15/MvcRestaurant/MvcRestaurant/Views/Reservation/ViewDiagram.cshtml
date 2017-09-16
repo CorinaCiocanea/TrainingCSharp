@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<MvcRestaurant.Models.BookingForm>
+
+@{
     ViewBag.Title = "ViewDiagram";
 }
 
@@ -50,14 +52,35 @@
         <input type="button" id="btnShowNew" value="Show Selected Table" />
         <input type="button" id="btnShow" value="Show All" />           
         </div>
-
+<table>
+ <tr>
+    <th>
+       NumberOfPeople
+     </th>
+    <th>
+     ReservationDate
+    </th>
+     <th>
+         TimeOfBooking
+     </th>
+  </tr>
+@foreach(var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor( modelItem => item.NumberOfPeople)
+    </td>
+    <td>
+       @Html.DisplayFor( modelItem => item.ReservationDate)
+    </td>
+     <td>
+       @Html.DisplayFor( modelItem => item.TimeOfBooking)
+    </td>
+</tr>
+}
+    </table>
 
 <script>
-    //$('.tableStyle').click(function () {
-    //    $(this).attr("src", "/Content/images/imagine2.png")
-    //})
-
-    $(".tableStyle").live('click', function () {
+    $(".tableStyle").on('click', function () {
 
         if ($(this).attr("src").toString().indexOf('imagine1.png') != -1) {
 
@@ -96,9 +119,3 @@
 </script>
 
 
-<script>
-    $('#Imag').click(function () {
-        $('#picture').attr('src', '/Content/images/imagine2.png');
-    });
-
-</script>

@@ -18,38 +18,45 @@ namespace MvcRestaurant.Controllers
 
         public ActionResult Index()
         {
-          
+
+            ViewBag.BookingFormId = new SelectList(db.BookingForms, "BookingFormId");
             return View();
 
         }
         [HttpPost]
         public ActionResult Index(BookingForm form)
         {
-            bool tableExist = db.Tables.Any(table => table.Status.Equals(Status.Free) && table.Tables.Exists(a => a.ReservationDate == form.ReservationDate));
-            
-            if (tableExist)
+            if (ModelState.IsValid)
             {
-                form.Message = "I'm sorry there is no free meal";
+                bool tableExist = db.Tables.Any(table => table.Status == Status.Free && table.Tables.All(a => a.ReservationDate != form.ReservationDate));
+
+                if (!tableExist)
+                {
+                    form.Message = "I'm sorry there is no free meal";
+                }
+                else
+                {
+                    db.BookingForms.Add(form);
+                    db.SaveChanges();
+                    form.Message = "Successful completion";
+                    return RedirectToAction("ViewDiagram");
+                }
             }
-            else
-            {
-                db.BookingForms.Add(form);
-                db.SaveChanges();
-                form.Message = "Successful completion";
-                return RedirectToAction("ViewDiagram");
-            }
+            ViewBag.BookingFormId = new SelectList(db.BookingForms, "BookingFormId");
             return View(form);
         }
         public ActionResult ViewTables()
         {
             var listForm = db.Tables.ToList();
-            //BookingForm form = db.BookingForms.Include(l => l.Tables).Single(l => l.BookingFormId == bookingId);
-            //ViewBag.BookingFormId = new SelectList(db.BookingForms, "BookingFormId");
             return View(listForm);
         }
-        public ActionResult ViewDiagram()
+        public ActionResult ViewDiagram(Table table)
         {
-            return View();
+            var listForm = db.BookingForms.ToList();
+            TagBuilder img = new TagBuilder("img");
+            img.Attributes.Add("src", table.DimensionTable + ".png");
+           // return new MvcHtmlString(img.ToString());
+            return View(listForm);
         }
     }
 }

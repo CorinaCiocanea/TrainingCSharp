@@ -7,6 +7,10 @@ namespace MvcRestaurant.Models
 {
     public class BookingForm
     {
+        public BookingForm()
+        {
+            Tables = new List<Table>();
+        }
         public int BookingFormId { get; set; }
         public string NumberOfPeople { get; set; }
         public DateTime ReservationDate { get; set; }
