@@ -12,13 +12,13 @@ namespace MvcRestaurant.Models
         {
             new List<Table> 
             {
-               new Table { DimensionTable = 4, Status=Status.Free, CoordinatesTable = new Coords(0, 0) },
-               new Table { DimensionTable = 2, Status=Status.Occupied, CoordinatesTable = new Coords(0, 1) },
-               new Table { DimensionTable = 6, Status=Status.Reserved, CoordinatesTable = new Coords(0, 2) },
-               new Table { DimensionTable = 4, Status=Status.Occupied, CoordinatesTable = new Coords(1, 0) },
-               new Table { DimensionTable = 8, Status=Status.Reserved, CoordinatesTable = new Coords(2, 0) },
-               new Table { DimensionTable = 2, Status=Status.Free, CoordinatesTable = new Coords(1, 1) },
-               new Table { DimensionTable = 6, Status=Status.Free, CoordinatesTable = new Coords(2, 2) }
+               new Table { DimensionTable = 4, Status=Status.Free, CoordinatesTable = new Coords(0, 0), ImageUrl="/Content/images/imagine1.png" },
+               new Table { DimensionTable = 2, Status=Status.Occupied, CoordinatesTable = new Coords(0, 1), ImageUrl="/Content/images/imagine1.png" },
+               new Table { DimensionTable = 6, Status=Status.Reserved, CoordinatesTable = new Coords(0, 2), ImageUrl="/Content/images/imagine1.png" },
+               new Table { DimensionTable = 4, Status=Status.Occupied, CoordinatesTable = new Coords(1, 0), ImageUrl="/Content/images/imagine1.png" },
+               new Table { DimensionTable = 8, Status=Status.Reserved, CoordinatesTable = new Coords(2, 0), ImageUrl="/Content/images/imagine1.png" },
+               new Table { DimensionTable = 2, Status=Status.Free, CoordinatesTable = new Coords(1, 1), ImageUrl="/Content/images/imagine1.png" },
+               new Table { DimensionTable = 6, Status=Status.Free, CoordinatesTable = new Coords(2, 2), ImageUrl="/Content/images/imagine1.png" }
                
             
             

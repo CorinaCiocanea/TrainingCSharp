@@ -1,4 +1,6 @@
-﻿@model IEnumerable<MvcRestaurant.Models.BookingForm>
+﻿@using MvcRestaurant.Models
+
+@model IEnumerable<MvcRestaurant.Models.Table>
 
 @{
     ViewBag.Title = "ViewDiagram";
@@ -50,34 +52,20 @@
     </div>
         <div style="clear:both;width:100%">
         <input type="button" id="btnShowNew" value="Show Selected Table" />
-        <input type="button" id="btnShow" value="Show All" />           
+        <input type="button" id="btnShow" value="Show All" />  
+            
         </div>
-<table>
- <tr>
-    <th>
-       NumberOfPeople
-     </th>
-    <th>
-     ReservationDate
-    </th>
-     <th>
-         TimeOfBooking
-     </th>
-  </tr>
-@foreach(var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor( modelItem => item.NumberOfPeople)
-    </td>
-    <td>
-       @Html.DisplayFor( modelItem => item.ReservationDate)
-    </td>
-     <td>
-       @Html.DisplayFor( modelItem => item.TimeOfBooking)
-    </td>
-</tr>
+
+@foreach (var item in Model)
+{
+  @item.DimensionTable
+   @Html.Image("/Content/images/imagine1.png", "alt", "100")
 }
-    </table>
+
+@*<div class="display-field">
+    @Html.Image("/Content/images/imagine1.png","alt", "100")
+</div>*@
+
 
 <script>
     $(".tableStyle").on('click', function () {
@@ -102,20 +90,5 @@
     });
   </script>
 
-<script>
-    $(document).ready(function () {
-        $('.acc_trigger').each(function (i) {
-            var icon = new Array;
-            icon[0] = '/Content/images/imagine1.png';
-            icon[1] = '/Content/images/imagine1.png';
-            icon[2] = '/Content/images/imagine1.png';
-            icon[3] = '/Content/images/imagine1.png';
-            icon[4] = '/Content/images/imagine1.png';
-            icon[5] = '/Content/images/imagine1.png';
-
-            $(this).prepend('<img src=' + icon[i] + ' />');
-        });
-    });
-</script>
 
 

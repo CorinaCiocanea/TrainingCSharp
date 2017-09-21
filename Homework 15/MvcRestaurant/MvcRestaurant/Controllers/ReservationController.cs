@@ -50,12 +50,11 @@ namespace MvcRestaurant.Controllers
             var listForm = db.Tables.ToList();
             return View(listForm);
         }
-        public ActionResult ViewDiagram(Table table)
+        public ActionResult ViewDiagram()
         {
-            var listForm = db.BookingForms.ToList();
-            TagBuilder img = new TagBuilder("img");
-            img.Attributes.Add("src", table.DimensionTable + ".png");
-           // return new MvcHtmlString(img.ToString());
+            //var listForm = db.BookingForms.ToList();
+
+            var listForm = db.Tables.ToList();
             return View(listForm);
         }
     }
