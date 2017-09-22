@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("ViewDiagram", "Reservation")) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Reservation Form</legend>
@@ -37,7 +37,7 @@
         </div>
    
            <p>
-            <input type="submit" value="Complete" />
+            <input type="submit" value="Next" />
         </p>
         <p> @Html.ActionLink("ViewTables", "ViewTables")
 </p>

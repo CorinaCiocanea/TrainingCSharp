@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MvcRestaurant.Models;
 using System.Data.Entity;
+using MvcRestaurant.ViewModel;
 
 
 namespace MvcRestaurant.Controllers
@@ -28,7 +29,7 @@ namespace MvcRestaurant.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool tableExist = db.Tables.Any(table => table.Status == Status.Free && table.Tables.All(a => a.ReservationDate != form.ReservationDate));
+                bool tableExist = db.Tables.Any(table => table.Status == Status.Free && table.BookingForms.All(a => a.ReservationDate != form.ReservationDate));
 
                 if (!tableExist)
                 {
@@ -36,10 +37,8 @@ namespace MvcRestaurant.Controllers
                 }
                 else
                 {
-                    db.BookingForms.Add(form);
-                    db.SaveChanges();
                     form.Message = "Successful completion";
-                    return RedirectToAction("ViewDiagram");
+                    //return RedirectToAction("ViewDiagram");
                 }
             }
             ViewBag.BookingFormId = new SelectList(db.BookingForms, "BookingFormId");
@@ -54,8 +53,15 @@ namespace MvcRestaurant.Controllers
         {
             //var listForm = db.BookingForms.ToList();
 
-            var listForm = db.Tables.ToList();
+            var listForm = db.Tables.Include(b => b.BookingForms);
             return View(listForm);
+        }
+        public ActionResult ConfirmReservation(BookingTable bConfirm)
+        {
+            var tableForm = db.Tables.Include(b => b.BookingForms);
+            //db.BookingForms.Add(tableForm);
+            //db.SaveChanges();
+            return View();
         }
     }
 }

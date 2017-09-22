@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace MvcRestaurant.Models
 {
@@ -16,24 +17,29 @@ namespace MvcRestaurant.Models
     public class Table
     {
         public int TableId { get; set; }
+        //public int BookingFormId { get; set; }
         public int DimensionTable { get; set; }
         public Status Status { get; set; }
         public Coords CoordinatesTable { get; set;}
         public string ImageUrl { get; set; }
-        public virtual List<BookingForm> Tables { get; set; }
+        public virtual List<BookingForm> BookingForms { get; set; }
 
     }
-    public static class ImageHelper {
+    public static class ImageHelper
+    {
 
-        public static MvcHtmlString Image(this HtmlHelper helper, string src, string altText, string height)
+        public static MvcHtmlString Image(this HtmlHelper helper, string src, string altText, string height, object htmlAttributes)
         {
             var builder = new TagBuilder("img");
             builder.MergeAttribute("src", src);
-            builder.MergeAttribute("alt", altText="fsf");
+            builder.MergeAttribute("alt", altText);
+            //builder.MergeAttribute("class", imagClass);
             builder.MergeAttribute("height", height);
+            builder.MergeAttributes(new RouteValueDictionary(htmlAttributes));
+
             return MvcHtmlString.Create(builder.ToString(TagRenderMode.SelfClosing));
         }
-    
+
     }
 
    

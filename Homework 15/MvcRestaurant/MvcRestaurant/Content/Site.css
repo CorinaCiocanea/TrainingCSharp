@@ -403,3 +403,10 @@ position: relative;
 top: -44px;
 
 }
+
+.myCell {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    font-size: 60px;
+}

@@ -210,6 +210,7 @@
     <Content Include="Views\Reservation\ViewTables.cshtml" />
     <Content Include="Views\Diagram\Index.cshtml" />
     <Content Include="Views\Reservation\ViewDiagram.cshtml" />
+    <Content Include="Views\Reservation\ConfirmReservation.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
