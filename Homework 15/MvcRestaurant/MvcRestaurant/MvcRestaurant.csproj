@@ -103,6 +103,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BookingForm.cs" />
+    <Compile Include="Models\ImageHelper.cs" />
     <Compile Include="Models\RestaurantEntities.cs" />
     <Compile Include="Models\RestaurantInfo.cs" />
     <Compile Include="Models\SampleData.cs" />
