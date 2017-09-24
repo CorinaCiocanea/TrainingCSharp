@@ -38,7 +38,7 @@ namespace MvcRestaurant.Controllers
                 else
                 {
                     form.Message = "Successful completion";
-                    //return RedirectToAction("ViewDiagram");
+                    
                 }
             }
             ViewBag.BookingFormId = new SelectList(db.BookingForms, "BookingFormId");
@@ -51,10 +51,10 @@ namespace MvcRestaurant.Controllers
         }
         public ActionResult ViewDiagram()
         {
-            //var listForm = db.BookingForms.ToList();
-
-            var listForm = db.Tables.Include(b => b.BookingForms);
-            return View(listForm);
+            BookingTable bookT = new BookingTable();
+            bookT.TablesView = db.Tables.Include(b => b.BookingForms).ToList();
+            bookT.BookingFormView = new List<BookingForm>();
+            return View(bookT);
         }
         public ActionResult ConfirmReservation(BookingTable bConfirm)
         {

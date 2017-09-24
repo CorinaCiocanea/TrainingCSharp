@@ -1,12 +1,12 @@
-﻿@*@using MvcRestaurant.ViewModel
+﻿@using MvcRestaurant.ViewModel
 
 @model MvcRestaurant.ViewModel.BookingTable
-*@
 
-@using MvcRestaurant.Models
+
+@*@using MvcRestaurant.Models
 
 @model IEnumerable<MvcRestaurant.Models.Table>
-
+*@
 @{
     ViewBag.Title = "ViewDiagram";
 }
@@ -21,14 +21,15 @@
               @for (int j = 0; j < 3; j++)
               {
                 <td class="myCell">
-                     @foreach (var item in Model)
+                     @foreach (var item in Model.TablesView)
                     {
                         if (item.CoordinatesTable.CoordinateX == i && item.CoordinatesTable.CoordinateY == j)
                         {
                             <div class ="Img">                                
                                 @item.DimensionTable
-                                @Html.Image("/Content/images/imagine1.png", "alt", "100", new {id = "myImage", border = "0" })
-                            </div>
+                                  </div>
+                                @Html.Image("/Content/images/imagine1.png", "alt", "100", new {id = "myImage", border = "0", @class = "table" })
+                           
                         }
                     }
                 </td>
@@ -52,7 +53,7 @@
             <input type="submit" value="Confirm Reservation" />
         </p>
 
-@*@foreach (var item in Model.)
+@foreach (var item in Model.BookingFormView)
 { 
     
             @item.NumberOfPeople
@@ -60,11 +61,11 @@
             @Html.DisplayFor(modelItem => item.ReservationDate)
    
            @Html.DisplayFor(modelItem => item.TimeOfBooking)
- }*@
+ }
 
 
 <script>
-    $("#myImage").on('click', function () {
+    $(".table").on('click', function () {
 
         if ($(this).attr("src").toString().indexOf('imagine1.png') != -1) {
 
