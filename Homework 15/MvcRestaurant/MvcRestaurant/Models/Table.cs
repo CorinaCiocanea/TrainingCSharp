@@ -19,11 +19,11 @@ namespace MvcRestaurant.Models
         public int TableId { get; set; }
         //public int BookingFormId { get; set; }
         public int DimensionTable { get; set; }
-        public Status Status { get; set; }
+        public Status? Status { get; set; }
         public Coords CoordinatesTable { get; set;}
         public string ImageUrl { get; set; }
         public virtual List<BookingForm> BookingForms { get; set; }
-        public ImageHelper Image { get; set; }
+        //public ImageHelper Image { get; set; }
 
     }
 

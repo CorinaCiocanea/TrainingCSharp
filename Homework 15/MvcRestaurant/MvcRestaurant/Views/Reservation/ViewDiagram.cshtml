@@ -28,8 +28,10 @@
                             <div class ="Img">                                
                                 @item.DimensionTable
                                   </div>
+                                //if(item.Status == Status.Free)
+                                
                                 @Html.Image("/Content/images/imagine1.png", "alt", "100", new {id = "myImage", border = "0", @class = "table" })
-                           
+                     
                         }
                     }
                 </td>
@@ -63,7 +65,12 @@
            @Html.DisplayFor(modelItem => item.TimeOfBooking)
  }
 
-
+<div class="coordinates">
+        <input id="coord" class="coord" />
+    </div>
+@*<script>
+    var coord = $('#coord');
+</script>*@
 <script>
     $(".table").on('click', function () {
 

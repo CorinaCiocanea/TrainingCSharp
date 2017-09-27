@@ -49,12 +49,36 @@ namespace MvcRestaurant.Controllers
             var listForm = db.Tables.ToList();
             return View(listForm);
         }
-        public ActionResult ViewDiagram()
+        public ActionResult ViewDiagram(BookingForm form)
         {
             BookingTable bookT = new BookingTable();
-            bookT.TablesView = db.Tables.Include(b => b.BookingForms).ToList();
+            bookT.TablesView = new List<TableView>();
+            var myTables = db.Tables.Include(b => b.BookingForms).ToList();
+            foreach (Table table in myTables)
+            {
+                bool reservation = table.BookingForms.Any(b => b.ReservationDate == form.ReservationDate);
+                var tableView = new TableView()
+                {
+                    CoordinatesTable = table.CoordinatesTable,
+                    TableId = table.TableId,
+                    DimensionTable = table.DimensionTable,
+                    //Status = table.BookingForms.Any(b => b.ReservationDate == form.ReservationDate),
+                };
+                if (reservation == true)
+                {
+                    tableView.Status = Status.Reserved;
+                }
+                else
+                {
+                    tableView.Status = Status.Free;
+                }
+            }
             bookT.BookingFormView = new List<BookingForm>();
             return View(bookT);
+        }
+        public bool AnswerTime(BookingForm book)
+        {
+            return book.ReservationDate == DateTime.Now;
         }
         public ActionResult ConfirmReservation(BookingTable bConfirm)
         {
