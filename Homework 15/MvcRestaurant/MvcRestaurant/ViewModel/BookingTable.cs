@@ -12,6 +12,7 @@ namespace MvcRestaurant.ViewModel
     {
         public List<TableView> TablesView { get; set; }
         public List<BookingForm> BookingFormView { get; set; }
+        public TableView TableView { get; set; }
         //public Status Status { get; set; }
     }
     //public static class ImageHelper

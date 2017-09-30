@@ -1,4 +1,5 @@
 ﻿@using MvcRestaurant.ViewModel
+@using MvcRestaurant.Models
 
 @model MvcRestaurant.ViewModel.BookingTable
 
@@ -13,6 +14,7 @@
 
 <h2>ViewDiagram</h2>
 
+
 <div>
     <table border="1">
         @for (int i = 0; i < 3; i++)
@@ -22,18 +24,24 @@
               {
                 <td class="myCell">
                      @foreach (var item in Model.TablesView)
-                    {
-                        if (item.CoordinatesTable.CoordinateX == i && item.CoordinatesTable.CoordinateY == j)
-                        {
+                     {
+                         if (item.CoordinatesTable.CoordinateX == i && item.CoordinatesTable.CoordinateY == j)
+                         {
                             <div class ="Img">                                
                                 @item.DimensionTable
                                   </div>
-                                //if(item.Status == Status.Free)
+                             if (item.Status == Status.Free)
+                             {
                                 
-                                @Html.Image("/Content/images/imagine1.png", "alt", "100", new {id = "myImage", border = "0", @class = "table" })
-                     
-                        }
-                    }
+                                @Html.Image("/Content/images/imagine1.png", "alt", "100", new { id = item.TableId, border = "0", @class = "table" })
+                             }
+                             else if (item.Status == Status.Occupied)
+                             {
+                                  @Html.Image("/Content/images/imagine2.png", "alt", "100", new { id = item.TableId, border = "0", @class = "table" })
+                             }
+
+                         }
+                     }
                 </td>
               }
           </tr>
@@ -55,34 +63,59 @@
             <input type="submit" value="Confirm Reservation" />
         </p>
 
-@foreach (var item in Model.BookingFormView)
-{ 
-    
-            @item.NumberOfPeople
-      
-            @Html.DisplayFor(modelItem => item.ReservationDate)
-   
-           @Html.DisplayFor(modelItem => item.TimeOfBooking)
- }
-
 <div class="coordinates">
         <input id="coord" class="coord" />
     </div>
+  @using (Html.BeginForm("ConfirmReservation", "Reservation"))
+  {
+    @Html.ValidationSummary(true)
+  
+
+      foreach (var m in Model.TablesView)
+      {
+         
+         @Html.HiddenFor(model => m.TableId) 
+         @Html.HiddenFor(model => m.DimensionTable) 
+         @Html.HiddenFor(model => m.Status) 
+         @Html.HiddenFor(model => m.CoordinatesTable, new {@class = "coordinate"}) 
+          
+      }
+
+      foreach (var n in Model.BookingFormView)
+      {
+      @Html.HiddenFor(model => n.NumberOfPeople)
+      @Html.HiddenFor(model => n.ReservationDate)
+      @Html.HiddenFor(model => n.TimeOfBooking)
+  }
+         
+      
+       <p>
+            <input type="submit" value="Confirm Reservation" />
+       </p>
+      <div class="coord">
+</div>  
+     
+  }
+
+
 @*<script>
     var coord = $('#coord');
 </script>*@
 <script>
+    var coord = $('.coordinate');
+    var coord2 = $('.coord');
     $(".table").on('click', function () {
 
         if ($(this).attr("src").toString().indexOf('imagine1.png') != -1) {
 
             this.src = this.src.replace("imagine1.png", "imagine2.png");
-
+            coord2.val(coord);
         }
 
         else {
 
             this.src = this.src.replace("imagine2.png", "imagine1.png");
+            coord2.val(coord);
 
         }
 

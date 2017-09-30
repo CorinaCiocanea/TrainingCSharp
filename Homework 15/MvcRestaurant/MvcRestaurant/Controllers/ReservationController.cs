@@ -72,6 +72,9 @@ namespace MvcRestaurant.Controllers
                 {
                     tableView.Status = Status.Free;
                 }
+
+               // bookT.TablesView = new List<TableView>();
+                bookT.TablesView.Add(tableView);
             }
             bookT.BookingFormView = new List<BookingForm>();
             return View(bookT);
@@ -83,8 +86,9 @@ namespace MvcRestaurant.Controllers
         public ActionResult ConfirmReservation(BookingTable bConfirm)
         {
             var tableForm = db.Tables.Include(b => b.BookingForms);
-            //db.BookingForms.Add(tableForm);
-            //db.SaveChanges();
+            
+           // db.BookingForms.Add(bConfirm);
+          //  db.SaveChanges();
             return View();
         }
     }
