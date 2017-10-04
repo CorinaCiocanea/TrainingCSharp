@@ -33,11 +33,11 @@
                              if (item.Status == Status.Free)
                              {
                                 
-                                @Html.Image("/Content/images/imagine1.png", "alt", "100", new { id = item.TableId, border = "0", @class = "table" })
+                                @Html.Image("/Content/images/imagine1.png", "alt", "100", new { idCoord = item.TableId, border = "0", @class = "table" })
                              }
                              else if (item.Status == Status.Occupied)
                              {
-                                  @Html.Image("/Content/images/imagine2.png", "alt", "100", new { id = item.TableId, border = "0", @class = "table" })
+                                  @Html.Image("/Content/images/imagine2.png", "alt", "100", new { idCoord = item.TableId, border = "0", @class = "table" })
                              }
 
                          }
@@ -59,34 +59,19 @@
         <li style="background:url('/Content/images/imagine3.png') no-repeat scroll 0 0 transparent;">Occupied Table</li>
     </ul>
     </div>
-         <p>
-            <input type="submit" value="Confirm Reservation" />
-        </p>
-
-<div class="coordinates">
-        <input id="coord" class="coord" />
-    </div>
+ 
   @using (Html.BeginForm("ConfirmReservation", "Reservation"))
   {
     @Html.ValidationSummary(true)
   
 
-      foreach (var m in Model.TablesView)
-      {
-         
-         @Html.HiddenFor(model => m.TableId) 
-         @Html.HiddenFor(model => m.DimensionTable) 
-         @Html.HiddenFor(model => m.Status) 
-         @Html.HiddenFor(model => m.CoordinatesTable, new {@class = "coordinate"}) 
-          
-      }
-
-      foreach (var n in Model.BookingFormView)
-      {
-      @Html.HiddenFor(model => n.NumberOfPeople)
-      @Html.HiddenFor(model => n.ReservationDate)
-      @Html.HiddenFor(model => n.TimeOfBooking)
-  }
+    
+         @Html.HiddenFor(m => m.BookingFormView.NumberOfPeople) 
+         @Html.HiddenFor(m => m.BookingFormView.ReservationDate) 
+         @Html.HiddenFor(m => m.BookingFormView.ReservationTime) 
+      
+      @Html.TextBox("hiddenCoord","", new {@class = "coord" })
+      
          
       
        <p>
@@ -97,25 +82,37 @@
      
   }
 
-
-@*<script>
-    var coord = $('#coord');
-</script>*@
 <script>
-    var coord = $('.coordinate');
+   
     var coord2 = $('.coord');
+    var imagGroup = $(".table").parent().parent().find("input");
     $(".table").on('click', function () {
+
+        for (i = 0; i < imagGroup.length; i++) { imagGroup[i].checked = false; }
+        imagGroup.change();
 
         if ($(this).attr("src").toString().indexOf('imagine1.png') != -1) {
 
             this.src = this.src.replace("imagine1.png", "imagine2.png");
-            coord2.val(coord);
+            coord2.val($(this).attr("idCoord"));
+
+            //for (i = 0; i < imagGroup.length; i++) { imagGroup[i].checked = false; }
+            //imagGroup.change();
+        
+           
+            //$('.table').prop('checked', false);
+
+            //if($(this).attr('checked')==true)
+            //{
+            //    $('.table').not(this).attr('checked',false);
+            //}
+        
         }
 
         else {
 
             this.src = this.src.replace("imagine2.png", "imagine1.png");
-            coord2.val(coord);
+            coord2.val("");
 
         }
 

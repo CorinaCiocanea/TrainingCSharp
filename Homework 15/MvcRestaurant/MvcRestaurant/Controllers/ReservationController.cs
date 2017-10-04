@@ -25,7 +25,7 @@ namespace MvcRestaurant.Controllers
 
         }
         [HttpPost]
-        public ActionResult Index(BookingForm form)
+        public ActionResult Index(Reservation form)
         {
             if (ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace MvcRestaurant.Controllers
             var listForm = db.Tables.ToList();
             return View(listForm);
         }
-        public ActionResult ViewDiagram(BookingForm form)
+        public ActionResult ViewDiagram(Reservation form)
         {
             BookingTable bookT = new BookingTable();
             bookT.TablesView = new List<TableView>();
@@ -72,23 +72,28 @@ namespace MvcRestaurant.Controllers
                 {
                     tableView.Status = Status.Free;
                 }
-
-               // bookT.TablesView = new List<TableView>();
                 bookT.TablesView.Add(tableView);
             }
-            bookT.BookingFormView = new List<BookingForm>();
+            bookT.BookingFormView = new Reservation();
             return View(bookT);
         }
-        public bool AnswerTime(BookingForm book)
+        public bool AnswerTime(Reservation book)
         {
             return book.ReservationDate == DateTime.Now;
         }
-        public ActionResult ConfirmReservation(BookingTable bConfirm)
+        public ActionResult ConfirmReservation(BookingTable bConfirm, string hiddenCoord)
         {
             var tableForm = db.Tables.Include(b => b.BookingForms);
-            
-           // db.BookingForms.Add(bConfirm);
-          //  db.SaveChanges();
+            var myReservation = new Reservation();
+            myReservation.ReservationDate = bConfirm.BookingFormView.ReservationDate;
+            myReservation.NumberOfPeople = bConfirm.BookingFormView.NumberOfPeople;
+            myReservation.ReservationTime = bConfirm.BookingFormView.ReservationTime;
+           
+            //myReservation.Tables = bConfirm.TableView.CoordinatesTable;
+        
+
+            db.BookingForms.Add(myReservation);
+            db.SaveChanges();
             return View();
         }
     }
