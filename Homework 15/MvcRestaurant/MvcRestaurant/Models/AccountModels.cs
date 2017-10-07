@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
-using System.Web.Mvc.CompareAttribute;
+//using System.Web.Mvc.CompareAttribute;
 
 namespace MvcRestaurant.Models
 {

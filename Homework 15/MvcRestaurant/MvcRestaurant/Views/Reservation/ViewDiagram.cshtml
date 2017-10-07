@@ -35,9 +35,9 @@
                                 
                                 @Html.Image("/Content/images/imagine1.png", "alt", "100", new { idCoord = item.TableId, border = "0", @class = "table" })
                              }
-                             else if (item.Status == Status.Occupied)
+                             else if (item.Status == Status.Reserved)
                              {
-                                  @Html.Image("/Content/images/imagine2.png", "alt", "100", new { idCoord = item.TableId, border = "0", @class = "table" })
+                                  @Html.Image("/Content/images/imagine2.png", "alt", "100", new { idCoord = item.TableId, border = "0", @class = "table1" })
                              }
 
                          }
@@ -66,11 +66,11 @@
   
 
     
-         @Html.HiddenFor(m => m.BookingFormView.NumberOfPeople) 
-         @Html.HiddenFor(m => m.BookingFormView.ReservationDate) 
-         @Html.HiddenFor(m => m.BookingFormView.ReservationTime) 
+         @Html.HiddenFor(m => m.Reservation.NumberOfPeople) 
+         @Html.HiddenFor(m => m.Reservation.ReservationDate) 
+         @Html.HiddenFor(m => m.Reservation.ReservationTime) 
       
-      @Html.TextBox("hiddenCoord","", new {@class = "coord" })
+      @Html.TextBox("hiddenIdTable","", new {@class = "coord" })
       
          
       
@@ -85,27 +85,21 @@
 <script>
    
     var coord2 = $('.coord');
-    var imagGroup = $(".table").parent().parent().find("input");
     $(".table").on('click', function () {
 
-        for (i = 0; i < imagGroup.length; i++) { imagGroup[i].checked = false; }
-        imagGroup.change();
 
+          //alert(coord2.val("idCoord"));
+        var cor = coord2.val($(this).attr("idCoord"));
         if ($(this).attr("src").toString().indexOf('imagine1.png') != -1) {
 
+
             this.src = this.src.replace("imagine1.png", "imagine2.png");
-            coord2.val($(this).attr("idCoord"));
+            //$(".table").removeClass(".table1");
+            //$(this).addClass(".table1");
 
-            //for (i = 0; i < imagGroup.length; i++) { imagGroup[i].checked = false; }
-            //imagGroup.change();
-        
-           
-            //$('.table').prop('checked', false);
-
-            //if($(this).attr('checked')==true)
-            //{
-            //    $('.table').not(this).attr('checked',false);
-            //}
+            //coord2.val($(this).attr("idCoord"));
+            //$('.table').removeClass("idCoord")
+            //$(this).addClass("idCoord")
         
         }
 
@@ -113,6 +107,7 @@
 
             this.src = this.src.replace("imagine2.png", "imagine1.png");
             coord2.val("");
+           
 
         }
 

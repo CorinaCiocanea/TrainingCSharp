@@ -9,13 +9,14 @@ namespace MvcRestaurant.Models
     {
         public Reservation()
         {
-            Tables = new List<Table>();
+            //Tables = new List<Table>();
         }
-        public int BookingFormId { get; set; }
+        public int ReservationId { get; set; }
         public int NumberOfPeople { get; set; }
         public DateTime? ReservationDate { get; set; }
         public DateTime? ReservationTime { get; set; }
         public string Message { get; set; }
-        public virtual List<Table> Tables { get; set; }
+        public int TableId { get; set; }
+        public virtual Table Table { get; set; }
     }
 }

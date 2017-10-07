@@ -11,7 +11,7 @@ namespace MvcRestaurant.ViewModel
     public class BookingTable
     {
         public List<TableView> TablesView { get; set; }
-        public Reservation BookingFormView { get; set; }
+        public Reservation Reservation { get; set; }
         public TableView TableView { get; set; }
         //public Status Status { get; set; }
     }

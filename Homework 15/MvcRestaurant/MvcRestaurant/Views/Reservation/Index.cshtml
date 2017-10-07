@@ -1,4 +1,4 @@
-﻿@model MvcRestaurant.Models.BookingForm
+﻿@model MvcRestaurant.Models.Reservation
 
 @{
     ViewBag.Title = "Index";
@@ -29,11 +29,11 @@
         </div>
 
          <div class="editor-label">
-            @Html.LabelFor(model => model.TimeOfBooking)
+            @Html.LabelFor(model => model.ReservationTime)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.TimeOfBooking)
-            @Html.ValidationMessageFor(model => model.TimeOfBooking)
+            @Html.EditorFor(model => model.ReservationTime)
+            @Html.ValidationMessageFor(model => model.ReservationTime)
         </div>
    
            <p>

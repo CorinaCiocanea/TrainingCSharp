@@ -74,20 +74,22 @@ namespace MvcRestaurant.Controllers
                 }
                 bookT.TablesView.Add(tableView);
             }
-            bookT.BookingFormView = new Reservation();
+            bookT.Reservation = form;
             return View(bookT);
         }
         public bool AnswerTime(Reservation book)
         {
             return book.ReservationDate == DateTime.Now;
         }
-        public ActionResult ConfirmReservation(BookingTable bConfirm, string hiddenCoord)
+        public ActionResult ConfirmReservation(BookingTable bConfirm, int hiddenIdTable)
         {
-            var tableForm = db.Tables.Include(b => b.BookingForms);
-            var myReservation = new Reservation();
-            myReservation.ReservationDate = bConfirm.BookingFormView.ReservationDate;
-            myReservation.NumberOfPeople = bConfirm.BookingFormView.NumberOfPeople;
-            myReservation.ReservationTime = bConfirm.BookingFormView.ReservationTime;
+           // var tableForm = db.Tables.Include(b => b.BookingForms);
+            var myReservation = bConfirm.Reservation;
+            myReservation.TableId = hiddenIdTable;
+            //var myReservation = new Reservation();
+           // myReservation.ReservationDate = bConfirm.BookingFormView
+            //myReservation.NumberOfPeople = bConfirm.BookingFormView.NumberOfPeople;
+            //myReservation.ReservationTime = bConfirm.BookingFormView.ReservationTime;
            
             //myReservation.Tables = bConfirm.TableView.CoordinatesTable;
         
