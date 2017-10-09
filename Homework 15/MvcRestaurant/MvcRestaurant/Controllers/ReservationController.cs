@@ -54,6 +54,8 @@ namespace MvcRestaurant.Controllers
             BookingTable bookT = new BookingTable();
             bookT.TablesView = new List<TableView>();
             var myTables = db.Tables.Include(b => b.BookingForms).ToList();
+
+            Table m = new Table();
             foreach (Table table in myTables)
             {
                 bool reservation = table.BookingForms.Any(b => b.ReservationDate == form.ReservationDate);
@@ -83,19 +85,17 @@ namespace MvcRestaurant.Controllers
         }
         public ActionResult ConfirmReservation(BookingTable bConfirm, int hiddenIdTable)
         {
-           // var tableForm = db.Tables.Include(b => b.BookingForms);
-            var myReservation = bConfirm.Reservation;
-            myReservation.TableId = hiddenIdTable;
-            //var myReservation = new Reservation();
-           // myReservation.ReservationDate = bConfirm.BookingFormView
-            //myReservation.NumberOfPeople = bConfirm.BookingFormView.NumberOfPeople;
-            //myReservation.ReservationTime = bConfirm.BookingFormView.ReservationTime;
-           
-            //myReservation.Tables = bConfirm.TableView.CoordinatesTable;
-        
+            if (bConfirm.Reservation != null)
+            {
+                Reservation reservation = bConfirm.Reservation;
+                reservation.NumberOfPeople = 2;
+                var myReservation = bConfirm.Reservation;
 
-            db.BookingForms.Add(myReservation);
-            db.SaveChanges();
+                myReservation.TableId = hiddenIdTable;
+
+                db.BookingForms.Add(myReservation);
+                db.SaveChanges();
+            }
             return View();
         }
     }

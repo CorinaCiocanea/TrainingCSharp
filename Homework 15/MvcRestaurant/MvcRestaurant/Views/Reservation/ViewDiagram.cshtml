@@ -85,22 +85,34 @@
 <script>
    
     var coord2 = $('.coord');
+    var lastTable;
     $(".table").on('click', function () {
 
+        //var cor = coord2.val($(this).attr("idCoord"));
+        //lastTable = $(this);
+        if (lastTable != null) {
 
-          //alert(coord2.val("idCoord"));
+            if (lastTable.attr("src") == "/Content/images/imagine1.png") {
+                lastTable.attr("src", "/Content/images/imagine2.png")
+            }
+            else {
+                lastTable.attr("src", "/Content/images/imagine1.png")
+            }
+
+        }
+        
+
+    });
+
+    $(".table").on('click', function () {
+
         var cor = coord2.val($(this).attr("idCoord"));
+        lastTable = $(this);
         if ($(this).attr("src").toString().indexOf('imagine1.png') != -1) {
 
 
             this.src = this.src.replace("imagine1.png", "imagine2.png");
-            //$(".table").removeClass(".table1");
-            //$(this).addClass(".table1");
-
-            //coord2.val($(this).attr("idCoord"));
-            //$('.table').removeClass("idCoord")
-            //$(this).addClass("idCoord")
-        
+            
         }
 
         else {

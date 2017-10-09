@@ -10,7 +10,7 @@ namespace MvcRestaurant.Models
     {
         protected override void Seed(RestaurantEntities context)
         {
-            new List<Table> 
+           var x = new List<Table> 
             {
                new Table { DimensionTable = 4, Status=Status.Free, CoordinatesTable = new Coords(0, 0), ImageUrl="/Content/images/imagine1.png",
                BookingForms = new List<Reservation>() {new Reservation() {ReservationDate = DateTime.Today.AddDays(2), NumberOfPeople =4}}
@@ -24,7 +24,9 @@ namespace MvcRestaurant.Models
                
             
             
-            }.ForEach(a => context.Tables.Add(a));
+            }; 
+            //foreach (var table in tableList
+            x.ForEach(a => context.Tables.Add(a));
 
             Waiter coordinator = new Waiter() 
             {
